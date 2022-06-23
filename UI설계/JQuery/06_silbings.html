@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            .siblings *{
+                border: 2px solid gray;
+                padding: 5px;
+                margin: 15px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="siblings">
+            <p>ELEMENT 1</p>
+            <span>ELEMENT 2</span>
+            <span>ELEMENT 3</span>
+            <span>ELEMENT 4</span>
+            <h3>ELEMENT 5</h3>
+            <h4>ELEMENT 6</h4>
+            <h5>ELEMENT 7</h5>
+            <h6>ELEMENT 8</h6>
+            <p>ELEMENT 9</p>
+        </div>
+
+    </body>
+    <script>
+        //siblings() : 동일선상의 모든 형제 선택 (본인은 빼고)
+        //두번째 셀렉터를 지정하면 현재 요소중 해당 셀렉터에 해당하는 요소 선택
+        $('h3').siblings('p').css({'border':'2px solid red'});
+
+        //next() : 선택한 요소의 한칸 아래
+        $('h3').next().css({'border':'2px solid blue'});
+        //prev() : 선택한 요소의 한칸 위
+        $('h3').prev().css({'border':'2px solid green'});
+
+        //nextAll() : 선택한 요소로 부터 아래의 모든 요소
+        $('h3').nextAll('h6').css({'border':'2px solid yellowgreen'});
+        //prevAll() : 선택한 요소로 부터 위의 모든 요소
+        $('h3').prevAll('span').css({'border':'2px solid yellowgreen'});
+
+        //nextUntil() : 첫번째 셀렉터와 두번째 셀렉터를 제외한 사이 요소 (탐색방향 아래)
+        $('h3').nextUntil('p').css({'background-color':'yellow'});
+        //prevUntil() : 첫번째 셀렉터와 두번째 셀렉터를 제외한 사이 요소 (탐색방향 위)
+        $('h3').prevUntil('p').css({'background-color':'skyblue'});
+
+
+    </script>
+</html>

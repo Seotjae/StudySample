@@ -1,0 +1,877 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <title></title>
+        <style>
+            /* 전체 틀 */
+            #main_wrap{
+                position: relative;
+                /* border: 1px solid lightgrey; */
+                width: 1300px;
+                height: 1500px;
+                margin: -8 auto;
+            }
+            #main_wrap_header{
+                position: sticky;
+                /* border-bottom: 1px solid lightgrey; */
+                width: 100%;
+                height: 90px;
+                top: 0px;
+                z-index: 9;
+                background-color: white;
+            }
+            #main_wrap_header_left{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 20%;
+                height: 100%;
+            }
+            #main_wrap_header_center{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 59.8%;
+                height: 100%;
+                left: 20%;
+            }
+            #main_wrap_header_right{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 20%;
+                height: 100%;
+                right: 0%;
+            }
+            #main_wrap_category{
+                position: sticky;
+                /* border-top: 1px solid lightgrey; */
+                /* border-bottom: 1px solid lightgrey; */
+                width: 100%;
+                height: 80px;
+                top: 90px;
+                z-index: 9;
+                background-color: white;
+            }
+            #hiddentap{
+                position: sticky;
+                border: 1px solid lightgrey;
+                border-top: 0px;
+                width: 90%;
+                height: 400px;
+                top: 170px;
+                z-index: 8;
+                margin: 0 auto;
+                background-color: white;
+            }
+            #main_container{
+                position: absolute;
+                width: 100%;
+                height: 80%;
+                top: 170px;
+                /* border-top: 1px solid lightgrey; */
+                border-bottom: 1px solid lightgrey;
+            }
+            #main_footer{
+                position: absolute;
+                /* border-top: 1px solid black;
+                border-bottom: 1px solid black; */
+                width: 100%;
+                height: 125px;
+                bottom: 0px;
+            }
+            a:link{
+                text-decoration: none;
+            }
+
+
+            /* 세부 영역 */
+            /* 1. 헤더 */
+            /* 2.6:1 */
+            #logo{ 
+                position: absolute;
+                width: 182px;
+                height: 70px;
+                bottom: 0px;
+            }
+            #logo_link{
+                position: absolute;
+                width: 182px;
+                height: 70px;
+                left: 25%;
+                bottom: 0px;
+            }
+            #search{
+                position: absolute;
+                bottom: 8%;
+                width: 65%;
+                height: 50px;
+                padding-left: 20px;
+                padding-top: 5px;
+                left: 20%;
+                border-radius: 10px;
+                border: 2px solid rgb(7, 106, 206);
+                font-size: 20px;
+            }
+            #search_icon{
+                width: 30px;
+                height: 30px;
+                bottom: 20%;
+                right: 17%;
+                cursor: pointer;
+            }
+            #search_button{
+                border: 0px;
+                background-color: white;
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                bottom: 20%;
+                right: 17%;
+                cursor: pointer;
+                padding: 0px;
+            }
+            #login{
+                position: absolute;
+                border: 2px solid rgb(7, 106, 206);
+                border-radius: 10px;
+                width: 100px;
+                height: 40px;
+                bottom: 10%;
+                right: 25%;
+                background-color: rgb(7, 106, 206);
+                font-size: 20px;
+                font-weight: 700;
+                color: white;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+            }
+
+            /* 2.카테고리 */
+            .category_tap{
+                position: absolute;
+                border-top: 2px solid rgb(7, 106, 206);
+                border-bottom: 2px solid rgb(7, 106, 206);
+                height: 60%;
+                text-align: center;
+                color: rgb(7, 106, 206);
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 50px;
+                top: 20%;
+                cursor: pointer;
+            }
+            #category_one{
+                width: 10%;
+                left: 5%;
+            }
+            #category_two{
+                width: 16%;
+                left: 15%;
+            }
+            #category_three{
+                width: 16%;
+                left: 31%;
+            }
+            #category_four{
+                width: 16%;
+                left: 47%;
+            }
+            #category_five{
+                width: 16%;
+                left: 63%;
+            }
+            #category_six{
+                width: 16%;
+                left: 79%;
+            }
+            #hiddentap_one{
+                position: absolute;
+                width: 130px;
+                height: 100%;
+                /* border: 1px solid black; */
+                background-color: white;
+                z-index: 9;
+            }
+            .hiddentap_tap{
+                position: absolute;
+                width: 210px;
+                height: 100%;
+                border-left: 1px solid lightgray;
+                background-color: white;
+                z-index: 9;
+                text-align: center;
+            }
+            .hiddentap_tap ul{
+                width: 100%;
+                margin: 0px auto;
+                /* margin-top: 10px; */
+                padding: 0px;
+                list-style: none;
+                cursor: pointer;
+            }
+            .hiddentap_tap li{
+                padding: 10px 0px;
+            }
+            .hiddentap_tap li:hover, .category_tap:hover{
+                background-color: rgb(7, 106, 206);
+                color: white;
+                font-weight: 600;
+            }
+            #hiddentap_two{
+                left: 130px;
+            }
+            #hiddentap_three{
+                left: 340px;
+            }
+            #hiddentap_four{
+                left: 545px;
+            }
+            #hiddentap_five{
+                left: 750px;
+            }
+            #hiddentap_six{
+                left: 955px;
+            }
+            #closebox{
+                top: 0px;
+                right: 0px;
+                position: absolute;
+                margin: 0px;
+                padding: 0px;
+                /* border: 1px solid black; */
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                color: rgb(7, 106, 206);
+                font-size: 20px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            /* 3. container */
+            #main_container_wrap{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 73%;
+                height: 1150px;
+                top: 5%;
+                left: 5%;
+            }
+            .img_line{
+                width: 100%;
+                height: 200px;
+            }
+            .text_line{
+                width: 100%;
+                height: 80px;
+            }
+            .img_line a{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+            }
+            .text_line span{
+                position: absolute;
+                width: 200px;
+                height: 80px;
+                cursor: pointer;
+            }
+            .main_text_p1{
+                color: black;
+                text-align: center;
+                font-weight: 500;
+                margin: 0;
+            }
+            .main_text_p2{
+                color: rgb(7, 106, 206);
+                text-align: center;
+                font-weight: 600;
+                margin: 0;
+            }
+            .img_tag1, .main_text1{
+                left: 130px;
+            }
+            .img_tag2, .main_text2{
+                left: 430px;
+            }
+            .img_tag3, .main_text3{
+                left: 730px;
+            }
+            .main_img{
+                position: absolute;
+                border-radius: 15px;
+                width: 200px;
+                height: 200px;
+            }
+            #main_container_sidebar{
+                position: fixed;
+                border-top: 2px solid rgb(7, 106, 206);
+                border-bottom: 2px solid rgb(7, 106, 206);
+                border-left: 1px solid lightgray;
+                border-right: 1px solid lightgray;
+                border-radius: 5px;
+                width: 120px;
+                text-align: center;
+                top: 25%;
+                margin-left: 1113px;
+            }
+            #main_container_sidebar span{
+                color: black;
+                font-weight: 600;
+                font-size: 15px;
+            }
+            #bar_one{
+                margin: 0 auto;
+                width: 100%;
+                height: 300px;
+                border-bottom: 2px solid rgb(7, 106, 206);
+
+            }
+            #bar_two{
+                width: 100%;
+                height: 100px;
+                border-bottom: 2px solid rgb(7, 106, 206);
+            }
+            /* 쇼핑백 무늬에 숫자 넣기 */
+            #bar_three{ 
+                width: 100%;
+                /* border-left: 1px solid lightgray;
+                border-right: 1px solid lightgray; */
+                padding: 10px 0px;
+                cursor: pointer;
+                color: black;
+                font-weight: 600;
+                font-size: 15px;
+                
+            }
+            #bar_three:hover{
+                color: rgb(7, 106, 206);
+            }
+            #bar_three:active{
+                color: gray;
+
+            }
+            .item{
+                border-top: 1px solid gray;
+                width: 70%;
+                height: 100%;
+                margin: 0 auto;
+            }
+            .item a{
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                position: absolute;
+                width: 90px;
+                height: 70px;  
+                left: 15px;
+            }
+            .item a:hover{
+                border-left: 1px solid gray;
+                border-right: 1px solid gray;
+                border-radius: 10px;
+            }
+            .item img{
+                padding-top: 8px;
+                width: 80px;
+                height: 60px;    
+            }
+            .item_tag1{
+                top: 33px;
+            }
+            .item_tag2{
+                top: 123px;
+            }
+            .item_tag3{
+                top: 213px;
+            }
+            #shoppingbag{
+                margin-top: 4px;
+                width: 50px;
+                height: 50px;
+            }
+
+            /* 4. footer */
+            .footer_line{
+                margin: 0 auto;
+                width: 50%;
+                height: 50%;
+            }
+            .footer_line span{
+                font-size: 12px;
+                width: 200px;
+                height: 100%;
+                color: gray;
+                margin-left: 20px;
+            }
+            #footer_one{
+                line-height: 60px;
+                text-align: center;
+            }
+            #footer_two{
+                line-height: 0px;
+                text-align: center;
+            }
+
+            /* 5. 로그인 창 */
+            #login_wrap{
+                display: none;
+                position: absolute;
+                width: 1900px;
+                height: 1500px;
+                margin-left: -8;
+                background-color: rgb(0, 0, 0, 0.85);
+                z-index: 10;
+            }
+            #login_page{
+                position: sticky;
+                border-radius: 15px;
+                width: 500px;
+                height: 500px;
+                background-color: white;
+                z-index: 10;
+                top: 20%;
+                left: 35%;
+            }
+            /* 2.6:1 */
+            #login_logo_link{
+                position: absolute;
+                width: 156px;
+                height: 60px;
+                top: 40px;
+                left: 150px;
+            }
+            #login_logo_img{
+                position: absolute;
+                width: 156px;
+                height: 60px;
+            }
+            #login_page input{
+                position: absolute;
+                width: 300px;
+                height: 50px;
+                left: 100px;
+                border: 1px solid rgb(7, 106, 206);
+                border-radius: 10px;
+            }
+            #login_page p{
+                position: absolute;
+                left: 105px;
+                margin: 0;
+                font-size: 13px;
+                font-weight: 600;
+                color: rgb(7, 106, 206);
+            }
+            #id{
+                top: 130px;
+            }
+            #login_page input[name="id"]{
+                top: 150px;
+            }
+            #pw{
+                top: 220px;
+            }
+            #login_page input[name="pw"]{
+                top: 240px;
+            }
+            #login_page button{
+                position: absolute;
+                width: 200px;
+                height: 50px;
+                border: 1px solid rgb(7, 106, 206);
+                border-radius: 10px;
+                background-color: rgb(7, 106, 206);
+                color: white;
+                font-size: 20px;
+                font-weight: 600;
+                left: 150px;
+                top: 350px;
+                cursor: pointer;
+            }
+            #login_closebox{
+                top: 20px;
+                right: 20px;
+                position: absolute;
+                margin: 0px;
+                padding: 0px;
+                /* border: 1px solid black; */
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                color: rgb(7, 106, 206, 0.9);
+                font-size: 25px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+            #alert{
+                display: none;
+                position: absolute;
+                top: 325px;
+                left: 150px;
+                font-size: 12px;
+                color: rgb(255, 0, 0);
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="login_wrap">
+            <div id="login_page">
+                <a id="login_logo_link" href="./02_trytwo.html">
+                    <img id="login_logo_img" src="./logo.jpg" alt="사이트로고"/>
+                </a>
+                <p id='id'>아이디</p>
+                <input type="text" name="id" placeholder="아이디를 입력하세요">
+                <p id="pw">비밀번호</p>
+                <input type="password" name="pw" placeholder="비밀번호를 입력하세요">
+                <span id="alert">아이디 또는 비밀번호를 확인하세요</span>
+                <button id="login_button">로그인</button>
+                <div id="login_closebox">X</div>
+            </div>
+        </div>
+
+        <div id="main_wrap">
+        
+
+            <div id="main_wrap_header">
+                <div id="main_wrap_header_left" class="headertap">
+                    <a id="logo_link" href="./02_trytwo.html">
+                        <img id="logo" src="./logo.jpg" alt="사이트로고"/>
+                    </a>
+                </div>
+                <div id="main_wrap_header_center" class="headertap">
+                    <form action="#">
+                        <input id="search" type="text" placeholder="검색어를 입력하세요."/>
+                        <!-- <img id="search_icon" src="./search.png" alt="검색버튼"> -->
+                        <button id="search_button" type="submit"><img id="search_icon" src="./search.png" alt="검색버튼"></button>
+                    </form>
+                </div>
+                <div id="main_wrap_header_right" class="headertap">
+                    <div id="login">
+                        <span>로그인</span>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="main_wrap_category" class="click_scope">
+                <span id="category_one" class="category_tap">카테고리</span>
+                <span id="category_two" class="category_tap">가전</span>
+                <span id="category_three" class="category_tap">PC</span>
+                <span id="category_four" class="category_tap">노트북</span>
+                <span id="category_five" class="category_tap">핸드폰</span>
+                <span id="category_six" class="category_tap">태블릿</span>
+            </div>
+            <div id="hiddentap" class="click_scope">
+                <span id="hiddentap_one">
+
+                </span>
+                <span id="hiddentap_two" class="hiddentap_tap">
+                    <ul>
+                        <li>TV</li>
+                        <li>냉장고</li>
+                        <li>에어컨</li>
+                        <li>가습기</li>
+                        <li>제습기</li>
+                        <li>선풍기</li>
+                        <li>공기청정기</li>
+                        <li>난방기기</li>
+                        <li>기타기기</li>
+                    </ul>
+                </span>
+                <span id="hiddentap_three" class="hiddentap_tap">
+                    <ul>
+                        <li>완본체</li>
+                        <li>CPU</li>
+                        <li>메인보드</li>
+                        <li>그래픽카드</li>
+                        <li>RAM</li>
+                        <li>SSD/HDD</li>
+                        <li>케이스/파워</li>
+                        <li>키보드/마우스</li>
+                        <li>기타기기</li>
+                    </ul>
+                </span>
+                <span id="hiddentap_four" class="hiddentap_tap">
+                    <ul>
+                        <li>인텔</li>
+                        <li>AMD</li>
+                        <li>애플</li>
+                        <li>게이밍</li>
+                        <li>사무용</li>
+                        <li>노트북<br/>주변기기</li>
+                        <li>기타기기</li>
+                    </ul>
+                </span>
+                <span id="hiddentap_five" class="hiddentap_tap">
+                    <ul>
+                        <li>애플</li>
+                        <li>삼성</li>
+                        <li>안드로이드</li>
+                        <li>SKT</li>
+                        <li>KT</li>
+                        <li>LG U+</li>
+                        <li>모바일<br/>주변기기</li>
+                        <li>자급제</li>
+                        <li>기타기기</li>
+                    </ul>
+                </span>
+                <span id="hiddentap_six" class="hiddentap_tap">
+                    <ul>
+                        <li>애플</li>
+                        <li>삼성</li>
+                        <li>안드로이드</li>
+                        <li>윈도우</li>
+                        <li>전자책</li>
+                        <li>셀룰러지원</li>
+                        <li>태블릿<br/>주변기기</li>
+                        <li>기타기기</li>
+                    </ul>
+                    <div id="closebox">X</div>
+                </span>
+               
+            </div>
+
+
+
+
+            <div id="main_container">
+                <div id="main_container_wrap">
+                    <div class="img_line">
+                        <a href="http://www.11st.co.kr/products/3954707227/share" class="img_tag1" target="_blank">
+                            <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/21/7/0/7/2/2/7/DMArw/3954707227_B.jpg" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="http://gmkt.kr/gBrjVxN" class="img_tag2" target="_blank">
+                            <img src="http://img.danawa.com/prod_img/500000/762/010/img/11010762_2.jpg?shrink=500:500&_v=20211109111653" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="http://www.11st.co.kr/products/3695143739/share" class="img_tag3" target="_blank">
+                            <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/21/1/4/3/7/3/9/SknpB/3695143739_B.jpg" alt="제품" class="main_img"/>
+                        </a>             
+                    </div>
+                    <div class="text_line">
+                        <span class="main_text1"><p class="main_text_p1">LG 스탠바이미 27ART10AKPL</p><p class="main_text_p2">1,040,000 원</p></span>
+                        <span class="main_text2"><p class="main_text_p1">삼성전자 더 세로 KQ43LST05BFXKR (스탠드)</p><p class="main_text_p2">1,498,300 원</p></span>
+                        <span class="main_text3"><p class="main_text_p1">ASUS 게이밍노트북 FX516PR-HN002</p><p class="main_text_p2">1,698,940 원</p></span>
+                    </div>
+                    <div class="img_line">
+                        <a href="https://dpg.danawa.com/news/view?boardSeq=63&listSeq=4907106" class="img_tag1" target="_blank">
+                            <img src="https://img.danawa.com/cp_images/service/138/4907106/bccb8417.jpg" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://dpg.danawa.com/news/view?boardSeq=64&listSeq=4909442" class="img_tag2" target="_blank">
+                            <img src="https://img.danawa.com/images/news/images/000992/20211209195925141_AQQ9CM8O.jpg" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://dpg.danawa.com/news/view?boardSeq=63&listSeq=4906365" class="img_tag3" target="_blank">
+                            <img src="https://img.danawa.com/cp_images/service/189/4906365/1f369721.jpg" alt="제품" class="main_img"/>
+                        </a> 
+                    </div>
+                    <div class="text_line">
+                        <span class="main_text1"><p class="main_text_p1">NFT 디지털 아트 시대 원본을 생생하게, 넷기어 뮤럴 캔버스 II</p><p class="main_text_p2"></p></span>
+                        <span class="main_text2"><p class="main_text_p1">인텔 12세대 코어 프로세서 ‘변화의 시작을 알리는 하이브리드 아키텍처</p><p class="main_text_p2"></p></span>
+                        <span class="main_text3"><p class="main_text_p1">A320 메인보드는 라이젠 5 5600X의 꿈을 꾸는가?</p><p class="main_text_p2"></p></span>
+                    </div>
+                    <div class="img_line">
+                        <a href="http://plan.danawa.com/info/index.php?nPlanSeq=5619" class="img_tag1" target="_blank">
+                            <img src="http://img.danawa.com/new/cmpart/splan/2021/211101_samsung/images/main.jpg" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://dpg.danawa.com/news/view?boardSeq=62&listSeq=4905993" class="img_tag2" target="_blank">
+                            <img src="https://img.danawa.com/cp_images/service/138/4905993/fcb6bb18.jpg" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://dpg.danawa.com/news/view?boardSeq=130&listSeq=4906872" class="img_tag3" target="_blank">
+                            <img src="http://img.danawa.com/prod_img/500000/517/954/img/6954517_2.jpg?shrink=330:330&_v=20211207111340" alt="제품" class="main_img"/>
+                        </a> 
+                    </div>
+                    <div class="text_line">
+                        <span class="main_text1"><p class="main_text_p1">삼성 비스포크 청소기 분석 및 제품별 비교!</p><p class="main_text_p2"></p></span>
+                        <span class="main_text2"><p class="main_text_p1">FHS 디자인 CPU 쿨러의 새로운 변신, 잘만 CNPS7600 RGB</p><p class="main_text_p2"></p></span>
+                        <span class="main_text3"><p class="main_text_p1">[연말선물추천] 2021년 총 결산! 전자노트 인기 TOP 5는?</p><p class="main_text_p2"></p></span>
+                    </div>
+                    <div class="img_line">
+                        <a href="https://blog.naver.com/tech-plus/222589872367" class="img_tag1" target="_blank">
+                            <img src="https://postfiles.pstatic.net/MjAyMTEyMDhfNzIg/MDAxNjM4OTM2NzU0OTQ1.NqjD6wEE3hJYNu9MX2nm0QpIKciYok34Ti4A5AtAHzkg.oF3eu7yjUef98L7FEzyILnyhXxXdg-1JU5g899Qe0Ggg.GIF.tech-plus/giphy.gif?type=w773" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://blog.naver.com/tech-plus/222589989052" class="img_tag2" target="_blank">
+                            <img src="https://postfiles.pstatic.net/MjAyMTEyMDhfMTIx/MDAxNjM4OTQ0MTE3NDU0.cogp7fd4u6iZuiSk7nA5hvHQUJ9F7q3XyK1-zeN-7Hwg.DIBIf0GWJhtY1KBy3-t0gL1NfcBesg6lrgUMjh8oJlAg.JPEG.tech-plus/002.jpg?type=w773" alt="제품" class="main_img"/>
+                        </a>
+                        <a href="https://blog.naver.com/tech-plus/222588023838" class="img_tag3" target="_blank">
+                            <img src="https://blogthumb.pstatic.net/MjAyMTEyMDZfMjgw/MDAxNjM4NzY0NTg5OTk4.lgDrk_e8BJ0WXmVdUuWESz6Y31A7RXV-S8Xpje4yVRog.7zxxmHPBZl9A3OxlvtNDAFtBHjoVrDKxZOSq77UqSSgg.JPEG.tech-plus/card_highlight_mobile.jpg?type=s1" alt="제품" class="main_img"/>
+                        </a> 
+                    </div>
+                    <div class="text_line">
+                        <span class="main_text1"><p class="main_text_p1">삼성 폴더블 집중하는 사이, 중국은 롤러블폰 노린다</p><p class="main_text_p2"></p></span>
+                        <span class="main_text2"><p class="main_text_p1">노트북 시장의 양대 산맥, 엘지 그램 vs 맥북 프로</p><p class="main_text_p2"></p></span>
+                        <span class="main_text3"><p class="main_text_p1">반도체 부족 장기화...스마트폰 가격 오르나?</p><p class="main_text_p2"></p></span>
+                    </div>
+                </div>
+                <div id="main_container_sidebar">
+                    <div id="bar_one">
+                        <span>최근 본 상품</span>
+                        <div class="item">
+                            <a class="item_tag1" href="http://www.11st.co.kr/products/3954707227/share" target="_blank">
+                                <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/21/7/0/7/2/2/7/DMArw/3954707227_B.jpg" alt="제품"/>
+                            </a>
+                            <a class="item_tag2" href="http://gmkt.kr/gBrjVxN" target="_blank">
+                                <img src="http://img.danawa.com/prod_img/500000/762/010/img/11010762_2.jpg?shrink=500:500&_v=20211109111653" alt="제품"/>
+                            </a>
+                            <a class="item_tag3" href="http://www.11st.co.kr/products/3695143739/share" target="_blank"> 
+                                <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/21/1/4/3/7/3/9/SknpB/3695143739_B.jpg" alt="제품"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="bar_two">
+                        <span>장바구니</span>
+                        <div class="item">
+                            <a href="#">
+                                <img id="shoppingbag" src="./shopperbag.png" alt/>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="bar_three">
+                        TOP
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="main_footer">
+                <div id="main_footer_wrap">
+                    <div id="footer_one" class="footer_line">
+                        <span>회사명 : STJ</span>
+                        <span>대표 : 최성재</span>
+                        <span>전화 : 1588-0000</span>
+                    </div>
+                    <div id="footer_two" class="footer_line">
+                        <span>사업자 등록번호 : 117-81-40000</span>
+                        <span>주소 : 서울특별시 금천구 가산로 00 00</span>
+                        <span>이메일 : abc123@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    <script>
+    $('#bar_three').click(function(){
+	    $('body').animate({scrollTop:0},400);
+    });
+
+    // $('#search_icon').click(function(){
+    //     window.location.href = './03_search.html';
+    // })
+    // $('#search').keypress(function(){
+    //     window.location.href = './03_search.html';
+    // })
+
+    $('#category_one').click(function() {
+        $('#main_wrap_category').slideDown();
+        $('.category_tap').slideDown();
+    });
+
+    $('#hiddentap').hide();
+    $('#category_one').click(function(){
+        $('#hiddentap').slideToggle();
+    });
+    $('#closebox').click(function(){
+        $('#hiddentap').slideUp();
+    });
+    $(document).click(function(e){
+        if( !$('.click_scope').has(e.target).length ){
+            $('#hiddentap').slideUp(); 
+        }        
+    });
+    $('#login').click(function(e){
+        $('#login_wrap').css('display','block');
+    });
+    $('#login_closebox').click(function(){
+        // console.log($('#login_wrap').css('display'));
+        $('#login_wrap').css('display','none');
+    });
+    $('#login_wrap').click(function(e){
+        if( !$('#login_wrap').has(e.target).length ){
+            $('#login_wrap').css('display','none');  
+        }
+    });
+    
+    $('#login_button').click(function() {
+        if ($('id').val()||$('pw').val() == null) {
+            $('#alert').css('display','block');
+        }else if ($('id').val() != 'admin' && $('pw').val() !='pass'){
+            $('#alert').css('display','block');
+        }
+    });
+    $('.img_tag1').hover(
+        function() {
+            // console.log($(this).parent().next().children().first());
+            $(this).parent().next().children().first().css('text-decoration','underline')
+        },
+        function() {
+            $(this).parent().next().children().first().css('text-decoration','none')
+        }
+    );
+    $('.img_tag2').hover(
+        function() {
+            // console.log($(this).parent().next().children().eq(1));
+            $(this).parent().next().children().eq(1).css('text-decoration','underline')
+        },
+        function() {
+            $(this).parent().next().children().eq(1).css('text-decoration','none')
+        }
+    );
+    $('.img_tag3').hover(
+        function() {
+            // console.log($(this).parent().next().children().last());
+            $(this).parent().next().children().last().css('text-decoration','underline')
+        },
+        function() {
+            $(this).parent().next().children().last().css('text-decoration','none')
+        }
+    );
+    $('.main_text1').click(function(){
+        // console.log($(this).parent().prev().children().first());
+       window.open($(this).parent().prev().children().first().attr('href'));
+    })
+    $('.main_text2').click(function(){
+        // console.log($(this).parent().prev().children().eq(1));
+        window.open($(this).parent().prev().children().eq(1).attr('href'));
+    })
+    $('.main_text3').click(function(){
+        // console.log($(this).parent().prev().children().last());
+        window.open($(this).parent().prev().children().last().attr('href'));
+    })
+    $('.main_text1').hover(
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','underline');
+            $(this).children().last().css('text-decoration','underline');
+        },
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','none');
+            $(this).children().last().css('text-decoration','none');
+        }
+    )
+    $('.main_text2').hover(
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','underline');
+            $(this).children().last().css('text-decoration','underline');
+        },
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','none');
+            $(this).children().last().css('text-decoration','none');
+        }
+    )
+    $('.main_text3').hover(
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','underline');
+            $(this).children().last().css('text-decoration','underline');
+        },
+        function(){
+            // console.log($(this).children().first());
+            $(this).children().first().css('text-decoration','none');
+            $(this).children().last().css('text-decoration','none');
+        }
+    )
+    
+    </script>
+</html>

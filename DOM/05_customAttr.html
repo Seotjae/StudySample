@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            /* p{
+                background-color: yellow;
+                color: blue;
+                font-weight: 600;
+                font-size: 160%;
+            } */
+        </style>
+    </head>
+    <body>
+        <p style="background-color: yellow; color: blue; font-weight: 600; font-size: 160%;">스타일이 있는 p 태그</p>
+        <input type="text" value="아무 내용이나...">
+        <a href="#" my-attr="header">링크 클릭</a>
+        <a href="#" my-attr="main">링크 클릭</a>
+        <a href="#" my-attr="footer">링크 클릭</a>
+
+    </body>
+    <script>
+        var elem = document.querySelector('p');
+
+        //value 값을 지정하지 않으면 해당 속성의 값을 가져온다
+        console.log(elem.style.backgroundColor);
+        //value 값을 지정하면 해당 속성을 수정한다
+        elem.style.backgroundColor ='green';
+
+        console.log(elem.innerHTML);
+        elem.innerHTML='수정된 p 태그';
+
+        //input tag 가져오기
+        // elem = document.getElementsByTagName('input');
+        // console.log(elem);
+        elem = document.querySelector('input');
+
+        //속성 확인
+        console.log(elem.type); //type 속성 값 불러오기
+        console.log(elem.value); // value 속성 값 불러오기
+
+        //속성 수정
+        elem.type='button';
+        elem.value='click';
+        elem.onclick='alert("hello")'; //속성을 직접 지정하는 방식은 유저속성과 함께 일부 속성은 동작하지 않는다
+        //이럴땐 setAttribute() 를 사용한다
+        elem.setAttribute('onclick', 'change()');
+        function change() {
+            var tags = document.getElementsByTagName('a');
+            console.log(tags);
+            //tags 에서 각각의 a 태그를 뽑아와 my-attr 속성 값을 확인해 보자  
+            var attr;
+            for(var i=0; i<tags.length; i++){
+                attr = tags[i].getAttribute('my-attr')
+                if (attr=='header') {
+                    tags[i].innerHTML='<h1>HEADER</h1>';
+                    tags[i].href='https://www.naver.com';
+                }
+                if (attr=='main') {
+                    tags[i].innerHTML='<h1>MAIN</h1>';
+                }
+                if (attr=='footer') {
+                    tags[i].innerHTML='<h1>FOOTER</h1>';
+                }
+            };
+            
+        }
+        
+    </script>
+</html>

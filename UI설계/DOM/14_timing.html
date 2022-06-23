@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>0</h1>
+        <button onclick="myFunction()">1초 후 실행</button>
+        <button onclick="counter()">1초 마다 실행</button>
+        <button onclick="stopCnt()">정지</button>
+    </body>
+    <script>
+        var time;
+
+        function counter() {
+            var i = 0;
+            time = setInterval(function(){
+                i++;
+                //console.log(i);
+                document.querySelector('h1').innerHTML = i;
+            }, 1000);
+        };
+
+        function stopCnt(){
+          clearInterval(time);  
+        };
+
+        function myFunction(){
+            setTimeout(function(){
+                alert('경고!');
+            }, 1000);
+        };
+    </script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            div{
+                position: absolute;
+                background-color: blue;
+                left: 5px;
+                width: 90px;
+                height: 90px;
+                margin: 5px;
+            }
+        </style>
+        <script>
+            //예전에는 이렇게 사용 -> 스크립트 읽느라고 html 읽는 속도가 늦어져서 하얀 화면 노출
+            //제이쿼리 초기 시절에는 헤드에 스크립트를 작성하는 경우가 많았다
+            $(document).ready(function(){ //문서가 다 준비되면 콜백 실행
+                //여기에 자바스크립트 코드나 제이쿼리 코드를 작성하였음
+
+                $('#right').click(function(){
+                    console.log('right');
+                    //css, 속도, 가속(swing|linear)
+                    //$('#obj').animate({'left':100},'slow','swing'); //딱 100만 움직인다
+
+                    //a = a+1 -> a += 1
+                    $('#obj').animate({'left':'+=1000'},'slow','linear'); 
+                });
+
+                //왼쪽으로
+                $('#left').click(function(){
+                    $('#obj').animate({'left':'-=1000'},'slow','linear');
+                });
+
+                //stop
+                $('#stop').click(function() {
+                    $('#obj').stop();
+                })
+
+                $('#special').click(function(){
+                    //동시에 여러 css를 수정할 수 있다
+                    $('#obj').animate(
+                        {'left':'+=100','width':'-=50','height':'-=50','opacity':'-=0.5'},
+                        1500,
+                        'linear',
+                        function(){
+                            alert('animation end'); //애니메이션이 종료되고 나면 실행
+                        }
+                    );
+                });
+
+                $('#step').click(function(){ //메서드 체인을 이용해서 단계적인 애니메이션 구현
+                    //가속은 명시하지 않으면 linear 가 기본
+                    $('#obj').animate({'left':'500',},'slow')
+                    .animate({'top':500},'slow')
+                    .animate({'left':0},'slow')
+                    .animate({'top':100},'slow');
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <button id="left">◀</button>
+        <button id="right">▶</button>
+        <button id="stop">■</button>
+        <button id="special">★</button>
+        <button id="step">step</button>
+        <div id="obj"></div>
+    </body>
+</html>

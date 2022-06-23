@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            .ancestors *{
+                border: 2px solid gray;
+                padding: 5px;
+                margin: 15px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ancestors"> .ancestors
+
+            <div>DIV
+                <div>DIV(great-grandparent)
+                    <ul>ul(grandparent)
+                        <li>li(parent)
+                            <span id="item">span</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>    
+
+    </body>
+    <script>
+        //id = "item" 에서 부터 html 까지 올라가면서 div 만 찾아보자
+
+        //html 까지 올라가면서 모든 부모 div 를 찾는다
+        $('#item').parents('div').css({'border':'2px solid red'});
+        
+        //html 까지 올라가면서 처음 만나는 부모 div 를 찾는다
+        $('#item').closest('div').css({'border':'2px solid blue'});
+
+    </script>
+</html>

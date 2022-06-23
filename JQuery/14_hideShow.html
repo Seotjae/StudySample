@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            div{
+                background-color: green;
+                width: 100px;
+                text-align: center;
+                padding: 10px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>메뉴</div>
+        <ul>
+            <li>LIST 01</li>
+            <li>LIST 02</li>
+            <li>LIST 03</li>
+            <li>LIST 04</li>
+            <li>LIST 05</li>
+        </ul>
+
+        <button id="toggle">OFF</button>
+        <p>LIST 01</p>
+        <p>LIST 02</p>
+        <p>LIST 03</p>
+        <p>LIST 04</p>
+        <p>LIST 05</p>
+
+    </body>
+    <script>
+        $('ul').hide(); //ul 태그를 숨기겠다
+        //div 에 마우스를 올리면 ul 이 show() 하고
+        //div 에 마우스가 벗어나면 ul 이 hide() 한다
+        //3.6.0 부터 속도 기재가 안됨
+        $('div').hover(
+            function(){ 
+                $('ul').show('slow'); //괄호 안에 속도를 기재하지 않으면 순식간에 나타난다
+        },  function(){ 
+                $('ul').hide(1000); //속도 기재 ('slow' | 'fast') 또는 (1000)
+        });
+
+        //hide & show 는 크기와 투명도를 조절하면서 요소를 숨기거나 보여준다
+        
+        $('#toggle').click(function() {
+            $('p').toggle(1000,function(){ //callback 함수 : 앞에 있는 내용이 다 끝나면 실행되는 함수
+                if ($('#toggle').html() == 'OFF') {
+                    $('#toggle').html('ON');
+                }else{
+                    $('#toggle').html('OFF');
+                }                
+            });
+
+        })
+    </script>
+</html>

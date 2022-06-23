@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">화살표 함수</h3>
+        <p>화살표 함수는 익명 함수를 편리하게 표기할 수 있도록 해준다.</p>
+        <p>=> 이런 화살표를 사용하여 뚱뚱한 화살(Fat Arrow)이라고도 한다.</p>
+        <p>그리고 익명함수와 화살표 함수는 몇가지 차이점이 존재한다.</p>
+        <button id="btn">CLICK</button>
+    </body>
+    <script>    
+        $('title').html($('#title').html());
+        /* 1. 사용법 */
+        function ex1(x,y) {
+            console.log(x+y);
+        }
+        ex1(3,4);
+        //화살표 함수
+        const ex01 = (x,y) => {
+            console.log(x+y);
+        }
+        ex01(3,5);
+
+        function x2(x,y){
+            return x*y;
+        }
+        console.log(x2(3,4));
+
+        //단순하게 반환문만 있을 경우 블록과 return 문은 생략 가능하다
+        const x02 = (x,y) => x*y;
+        console.log(x02(3,5));
+
+        function x3(x) {
+            return x*x;
+        }
+        console.log(x3(3));
+
+        //인자값이 하나일 경우 () 도 생략 가능하다
+        const x03 = x => x*x;
+        console.log(x03(4));
+
+
+        /* 2. 차이점 */
+        /*$('#btn').click(function() {
+            console.log(this);
+        });*/
+
+        /*$('#btn').click((e) => {
+            console.log(this); //화살표 함수는 자체 this 를 갖지 못한다
+            console.log(e.currentTarget); //이벤트 객체를 통해 원하는 요소를 가져온다.
+        });*/
+
+        $('#btn').click( e => console.log(e.currentTarget));
+
+
+        /* hoisting : 함수 선언이 호출부 보다 아래에 있다 하여도 위로 '끌어 올려지는' 현상 */
+        hoist();
+        function hoist() {
+            console.log('HOIST');
+        }
+
+        //위 내용을 hoistAnony 란 이름으로 화살표 함수로 만들어 보자
+        //Cannot access 'hoistAnony' before initialization
+        //화살표 함수 (익명함수 포함) 는 hoist 지원이 되지 않는다
+        const hoistAnony = () => console.log('HoistAnony');
+        hoistAnony();
+
+        /*
+            화살표 함수를 사용하기 좋은 경우
+            1. 축약해서 코드를 줄이고 싶은 경우
+            2. 자체 this 를 사용하지 않는 경우
+            3. 선언 즉시 사용할 경우
+        */
+
+
+        let test = msg => console.log(msg);
+
+        
+    </script>
+</html>

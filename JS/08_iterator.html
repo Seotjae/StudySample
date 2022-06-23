@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        var nums = [1,2,3,4,5,6,7,8,9];
+        //for 문으로 하나씩 콘솔로 출력하기
+        for(var i=0; i<nums.length; i++){
+            console.log(nums[i]);
+        };
+
+        //배열.forEach(하나씩 꺼내서 수행할 함수)
+        nums.forEach(function(num,idx){ //하나씩 꺼내온 값, 해당 값의 인덱스
+            console.log(idx,":",num);
+        });
+
+        //for(하나씩 받은 변수 of 배열) 자바의 향상된 for문과 비슷
+        for(var num of nums){
+            console.log("for of: ", num);
+        };
+
+        nums.forEach(function(a, b, c) {
+            console.log(a, b, c);
+        })
+
+
+
+    </script>
+</html>

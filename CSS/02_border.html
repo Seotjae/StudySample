@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>border</title>
+        <link rel="icon" href="./icon.png">
+        <style>
+            /* 각 클래스를 찾는 셀렉터를 활용해 보자 */
+            .one{ /* 모든 방향 5px red 실선 */
+                border: 5px solid red;
+            }
+            .two{ /* 모든 방향 얇게 대쉬 brown */
+                /* border: thin dashed brown; */
+                border-width: thin;
+                border-style: dashed;
+                border-color: brown;
+            }
+            .three{
+                /* color 는 default 가 black */
+                border-bottom-style: dotted;
+                border-top-style: double;
+                border-top-color: aqua;
+                border-left-style: solid;
+            }
+            .four{ /* 위(12):double 오른쪽(3):solid 아래(6):solid 왼쪽(9):dotted */
+                border-top-style: double;
+                border-right-style: solid;
+                border-bottom-style: solid;
+                border-left-style: dotted;
+
+            }
+            .five{ /* 12-3-6-9 */
+                border-style: double solid solid dotted;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="one">컨텐츠 입니다.</p>
+        <p class="two">컨텐츠 입니다.</p>
+        <p class="three">컨텐츠 입니다.</p>
+        <p class="four">컨텐츠 입니다.</p>
+        <p class="five">컨텐츠 입니다.</p>
+    </body>
+
+</html>

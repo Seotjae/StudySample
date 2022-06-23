@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            #obj{
+                position: absolute;
+                background-color: blueviolet;
+                width: 30px;
+                height: 30px;
+                top: 50%;
+                left: 50%;
+            }
+
+            #follow{
+                position: absolute;
+                height: 30px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="obj"></div>
+        <div id="follow">마우스를 따라 다녀요</div>
+    </body>
+    <script>
+        $(document).click(function(e){ 
+            //이벤트 객체는 이벤트가 발생한 곳의 콜백 함수에 자동으로 준다 
+            console.log('mouse : ',e.clientX,'/',e.clientY);
+
+            $('#obj').animate({'left':e.clientX,'top':e.clientY},'slow','swing');
+        });
+
+        $(document).mousemove(function(e){
+            //연속적으로 이벤트가 일어나므로 animate 가 필요없다
+            $('#follow').css({'left':e.clientX,'top':e.clientY});
+        })
+    </script>
+</html>

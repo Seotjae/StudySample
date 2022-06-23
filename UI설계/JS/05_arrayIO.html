@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- onclick = "실행할 함수 이름" -->
+        <input type="button" value="push()" onclick="arrPush()"/>
+        <input type="button" value="pop()" onclick="arrPop()"/>
+        <input type="button" value="unshift()" onclick="arrUnshift()"/>
+        <input type="button" value="shift()" onclick="arrShift()"/>
+    </body>
+    <script>
+        var arrNum = []; //변수 선언시 var 가 빠지면 전역 변수로 인식 (하지만 쓰지 말자)
+        var i = 1;
+        for(i; i<=5; i++){
+            arrNum[i-1] = i;
+        };
+        console.log(arrNum);
+        
+        function arrPush(){ //항상 이벤트를 걸때는 잘 동작하는지 콘솔을 먼저 찍어볼 것
+            //push 는 해당 배열의 가장 뒤에 값을 넣는 함수
+            arrNum.push(i);
+            i++;
+            console.log(arrNum);
+        };
+        console.log(arrPush);
+        function arrPop() {
+            //console.log("arrPop 동작");
+            //pop 은 해당 배열의 가장 뒤에서 값을 빼는 함수
+            var num = arrNum.pop();
+            console.log("빠진 값: ", num);
+        };
+
+        function arrUnshift(){
+            //console.log("arrUnshift() 동작");
+            //unshift 는 해당 배열의 가장 앞에 값을 넣는 함수
+            arrNum.unshift(i);
+            i++;
+            console.log(arrNum);
+        };
+
+        function arrShift(){
+            //console.log("arrShift 작동");
+            var num = arrNum.shift(i);
+            i++;
+            console.log("빠진 값:", num, " 배열 상태:", arrNum);
+        };
+
+    </script>
+</html>

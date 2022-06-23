@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="../img04.jpg">
+        <title>sprite image</title>
+        <style>
+            .bird1{
+                width: 110px;
+                height: 110px;
+                background: url("../spriteImg.png") 0px 0px; /* 불러올 이미지 x좌표 y좌표 */
+            }
+            .bird2{
+                width: 110px;
+                height: 110px;
+                background: url("../spriteImg.png") -200px 120px;
+            }
+            li{
+                float: left;
+                list-style: none;
+            }
+            hr{
+                clear: left;
+            }
+            .bird1:hover{
+                background: url("../spriteImg.png") -109px 0px;
+            }
+            .bird2:hover{
+                background: url("../spriteImg.png") -215px -10px;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe src="./naviteach.html" width="100%" height="50px" frameborder="0" scrolling="no"></iframe>
+        <h3>J-Query</h3>
+        <hr/>
+        <img width="110" height="110" src=""/> <!-- img 태그는 해당 이미지가 없으면 엑박과 테두리가 생긴다 -->
+        <!-- 만약 테두리가 싫다면 다른 이미지를 넣는다 -->
+        <!-- 다만 이미지가 백그라운드를 가리기 때문에 투명이미지를 사용한다 -->
+        <img class="bird1" src="../img_trans.png"/>
+        <img class="bird2" src="../img_trans.png"/>
+        <!-- 다른 방법으로는 img 태그가 아닌 div 나 li 태그를 사용한다 -->
+        <!-- li 의 점을 없애고 block 속성을 inline 으로 바꾸자-->
+        <ul>
+            <li class="bird1"></li>
+            <li class="bird2"></li>
+        </ul>
+        <hr/>
+        <iframe src="./footer.html" width="100%" height="70px" frameborder="0" scrolling="no"></iframe>
+    </body>
+</html>

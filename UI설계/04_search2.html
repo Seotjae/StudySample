@@ -1,0 +1,385 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <title></title>
+        <style>
+            /* 전체 틀 */
+            #main_wrap{
+                position: relative;
+                /* border: 1px solid lightgrey; */
+                width: 1300px;
+                height: 1500px;
+                margin: -8 auto;
+            }
+            #main_wrap_header{
+                position: sticky;
+                /* border-bottom: 1px solid lightgrey; */
+                width: 100%;
+                height: 90px;
+                top: 0px;
+                z-index: 10;
+                background-color: white;
+            }
+            #main_wrap_header_left{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 20%;
+                height: 100%;
+            }
+            #main_wrap_header_center{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 59.8%;
+                height: 100%;
+                left: 20%;
+            }
+            #main_wrap_header_right{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 20%;
+                height: 100%;
+                right: 0%;
+            }
+            #main_wrap_category{
+                position: sticky;
+                /* border-top: 1px solid lightgrey; */
+                border-bottom: 1px solid lightgrey;
+                width: 100%;
+                height: 80px;
+                top: 90px;
+                z-index: 10;
+                background-color: white;
+            }
+            #main_container{
+                position: absolute;
+                width: 100%;
+                height: 80%;
+                top: 170px;
+                /* border-top: 1px solid lightgrey; */
+                border-bottom: 1px solid lightgrey;
+            }
+            #main_footer{
+                position: absolute;
+                /* border-top: 1px solid black;
+                border-bottom: 1px solid black; */
+                width: 100%;
+                height: 125px;
+                bottom: 0px;
+            }
+            a:link{
+                text-decoration: none;
+            }
+
+
+            /* 세부 영역 */
+            /* 1. 헤더 */
+            /* 2.6:1 */
+            #logo{ 
+                position: absolute;
+                width: 182px;
+                height: 60px;
+                bottom: 1%;
+            }
+            #logo_link{
+                position: absolute;
+                width: 182px;
+                height: 60px;
+                bottom: 1%;
+                left: 25%;
+            }
+            #search{
+                position: absolute;
+                bottom: 8%;
+                width: 65%;
+                height: 50px;
+                padding-left: 20px;
+                padding-top: 5px;
+                left: 20%;
+                border-radius: 10px;
+                border: 2px solid rgb(7, 106, 206);
+                font-size: 20px;
+            }
+            #search_icon{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                bottom: 20%;
+                right: 17%;
+                cursor: pointer;
+            }
+            #login{
+                position: absolute;
+                border: 2px solid rgb(7, 106, 206);
+                border-radius: 10px;
+                width: 100px;
+                height: 40px;
+                bottom: 10%;
+                right: 25%;
+                background-color: rgb(7, 106, 206);
+                font-size: 20px;
+                font-weight: 700;
+                color: white;
+                text-align: center;
+                line-height: 40px;
+            }
+
+            /* 2.카테고리 */
+            .category_tap{
+                position: absolute;
+                border-top: 2px solid rgb(7, 106, 206);
+                border-bottom: 2px solid rgb(7, 106, 206);
+                height: 60%;
+                text-align: center;
+                color: rgb(7, 106, 206);
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 50px;
+                top: 20%;
+            }
+            #category_one{
+                width: 10%;
+                left: 5%;
+            }
+            #category_two{
+                width: 16%;
+                left: 15%;
+            }
+            #category_three{
+                width: 16%;
+                left: 31%;
+            }
+            #category_four{
+                width: 16%;
+                left: 47%;
+            }
+            #category_five{
+                width: 16%;
+                left: 63%;
+            }
+            #category_six{
+                width: 16%;
+                left: 79%;
+            }
+
+            /* 3. container */
+            #main_container_wrap{
+                position: absolute;
+                /* border: 1px solid black; */
+                width: 73%;
+                height: 1150px;
+                top: 5%;
+                left: 11%;
+                text-align: center;
+            }
+            #main_container_wrap span{
+                font-size: 30px;
+                color: gray;
+            }
+            .img_line{
+                width: 100%;
+                height: 200px;
+            }
+            .text_line{
+                width: 100%;
+                height: 80px;
+            }
+            .img_line a{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+            }
+            .text_line span{
+                position: absolute;
+                width: 200px;
+                height: 80px;
+            }
+            .main_text_p1{
+                text-align: center;
+                margin: 0;
+            }
+            .main_text_p2{
+                text-align: center;
+                margin: 0;
+            }
+            .img_tag1, .main_text1{
+                left: 130px;
+            }
+            .img_tag2, .main_text2{
+                left: 430px;
+            }
+            .img_tag3, .main_text3{
+                left: 730px;
+            }
+            .main_img{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+            }
+            .main_text{
+                width: 50px;
+                height: 100px;
+            }
+            #main_container_sidebar{
+                position: fixed;
+                border-top: 2px solid rgb(7, 106, 206);
+                border-bottom: 2px solid rgb(7, 106, 206);
+                border-left: 1px solid lightgray;
+                border-right: 1px solid lightgray;
+                border-radius: 5px;
+                width: 120px;
+                text-align: center;
+                top: 25%;
+                margin-left: 1113px;
+            }
+            #main_container_sidebar span{
+                color: black;
+                font-weight: 600;
+                font-size: 15px;
+            }
+            #bar_one{
+                margin: 0 auto;
+                width: 100%;
+                height: 300px;
+                border-bottom: 2px solid rgb(7, 106, 206);
+
+            }
+            #bar_two{
+                width: 100%;
+                height: 100px;
+                border-bottom: 2px solid rgb(7, 106, 206);
+            }
+            /* 쇼핑백 무늬에 숫자 넣기 */
+            #bar_three{ 
+                width: 100%;
+                /* border-left: 1px solid lightgray;
+                border-right: 1px solid lightgray; */
+                padding: 10px 0px;
+                cursor: pointer;
+                color: black;
+                font-weight: 600;
+                font-size: 15px;
+                
+            }
+            #bar_three:hover{
+                color: rgb(7, 106, 206);
+            }
+            #bar_three:active{
+                color: gray;
+
+            }
+            .item{
+                border-top: 1px solid gray;
+                width: 70%;
+                height: 100%;
+                margin: 0 auto;
+            }
+            .item a{
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                position: absolute;
+                width: 95px;
+                height: 75px;  
+                left: 13px;
+            }
+            .item a:hover{
+                border-left: 1px solid gray;
+                border-right: 1px solid gray;
+                border-radius: 20px;
+            }
+            .item img{
+                padding-top: 8px;
+                width: 80px;
+                height: 60px;    
+            }
+            .item_tag1{
+                top: 33px;
+            }
+            .item_tag2{
+                top: 123px;
+            }
+            .item_tag3{
+                top: 213px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main_wrap">
+
+            <div id="main_wrap_header">
+                <div id="main_wrap_header_left" class="headertap">
+                    <a id="logo_link" href="./02_trytwo.html">
+                        <img id="logo" src="./logo.jpg" alt="사이트로고"/>
+                    </a>
+                </div>
+                <div id="main_wrap_header_center" class="headertap">
+                    <input id="search" type="text" placeholder="검색어를 입력하세요."/>
+                    <img id="search_icon" src="./search.png" alt="검색버튼">
+                </div>
+                <div id="main_wrap_header_right" class="headertap">
+                    <div id="login">
+                        <span>로그인</span>
+                    </div>
+                </div> 
+            </div>
+
+
+            <div id="main_wrap_category">
+                <span id="category_one" class="category_tap">카테고리</span>
+                <span id="category_two" class="category_tap">가전</span>
+                <span id="category_three" class="category_tap">PC</span>
+                <span id="category_four" class="category_tap">노트북</span>
+                <span id="category_five" class="category_tap">핸드폰</span>
+                <span id="category_six" class="category_tap">태블릿</span>
+            </div>
+
+
+            <div id="main_container">
+                <div id="main_container_wrap">
+                    <span><b>검색 결과를  찾을 수 없습니다.</b></span>
+                </div>
+                <div id="main_container_sidebar">
+                    <div id="bar_one">
+                        <span>최근 본 상품</span>
+                        <div class="item">
+                            <a class="item_tag1" href="#">
+                                <img src="../노트북/tap_image1.jpg" alt="제품"/>
+                            </a>
+                            <a class="item_tag2" href="#">
+                                <img src="../노트북/tap_image2.jpg" alt="제품"/>
+                            </a>
+                            <a class="item_tag3" href="#">
+                                <img src="../노트북/tap_image3.jpg" alt="제품"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="bar_two">
+                        <span>장바구니</span>
+                        <div class="item">
+                        </div>
+                    </div>
+                    <div id="bar_three">
+                        TOP
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="main_footer">
+
+            </div>
+
+        </div>
+    </body>
+    <script>
+    $('#bar_three').click(function(){
+	    $('body').animate({scrollTop:0},400);
+    });
+
+    $('#search_icon').click(function(){
+        window.location.href = 'https://hianna.tistory.com';
+    })
+    </script>
+</html>

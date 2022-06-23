@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">*Call Back</h3>
+        <p>비동기 방식에서는 순치적으로 무언가를 진행하기가 어렵다.</p>
+        <p>비동기 상황에서 순차 실행을 위해 우리는 call back 을 사용한다.</p>
+        <p>call + back (부르다. ~ 후에 ...)</p>
+    </body>
+    <script>    
+        $('title').html($('#title').html());     
+        
+        /*
+        $('button').click(function() {
+            //call back -> 클릭이 되고난 후에..
+        });
+
+        $.ajax({
+            url:'',
+            type:'',
+            data:{},
+            dataType:'JSON',
+            success: function(data) {
+                //ajax 전송하고 결과가 성공적으로 나온 후에...
+            }
+
+        });
+        */
+       
+
+        //비동기 상황에서는 순차적 진행이 되지 않는다
+        //실제적인 예 : $.ajax({}) 함수
+        function plus(a) {
+           var result = 0;
+           setTimeout(function() {
+                result = a+10;
+                console.log('fir'+result);
+            },100); //0.1초 후에...
+            console.log('sec'+result);
+            return result;
+        }
+        console.log(plus(5));
+
+        //왜 0 이 찍히는 지?
+        //plus 함수가 실행되고 return을 먼저 반환한 뒤 setTimeout 함수가 실행된다
+        //해결 방법
+        function plus_call(a,callback) { //전달할 값, 다 끝나고 실행할 함수
+            var result = 0;
+
+            setTimeout(function() {
+                result = a+10;
+                callback(result);
+            },100);
+            
+        }
+
+        //콜백함수 활용하기
+        plus_call(5,function(result) { //5와 다 끝나고 실행할 함수
+            console.log(result);
+        });
+
+
+        //plus_call 을 실행시키고 거기서 나온 값에 2를 곱하는 함수
+        //setTimeout 적용할 것
+        function multi_call(a,callback) {
+            setTimeout(function() {
+                callback(a*2);
+            },100);
+        }
+
+        //plus_call() 의 콜백에서 multi_call()을 호출하여 또 다른 콜백을 실행
+        plus_call(5,function(result) {
+            multi_call(result,function(dap) {
+                console.log('정답 : '+dap);
+            });
+        });
+
+        //그래서 비동기 상황에서는 콜백을 통해서 순차 실행을 하게 된다.
+        //plus_call() -> multi_call() -> devide_call()
+        function devide_call(a,callback) {
+            setTimeout(function() {
+                callback(a/3);
+            },100);
+        }
+
+        plus_call(5,function(result) {
+            multi_call(result,function(dap) {
+                devide_call(dap,function(val) {
+                    console.log('최종 답 : '+val);
+                })
+            })
+        });
+
+        //비동기 상황에서 순차 실행을 많이 하게 될 경우엔 콜백을 자주 사용할 수 밖에 없다.
+        //만약 비동기로 회원가입 -> 로그인 -> 리스트 불러오기 -> 리스트 그리기 -> 페이징 처리하기를 하려면
+        //콜백 -> 콜백 -> 콜백 -> 콜백 -> 콜백
+        //콜백 지옥 ... (JS 에서 일어난다)
+        $.ajax({ //1단계 처리
+            url:'',
+            type:'',
+            data:{},
+            dataType:'JSON',
+            success: function(data) {
+                $.ajax({ //2단계 처리
+                    url:'',
+                    type:'',
+                    data:{},
+                    dataType:'JSON',
+                    success: function(data) {
+                        $.ajax({ //3단계 처리
+                            url:'',
+                            type:'',
+                            data:{},
+                            dataType:'JSON',
+                            success: function(data) {
+                                $.ajax({ //4단계 처리
+                                    url:'',
+                                    type:'',
+                                    data:{},
+                                    dataType:'JSON',
+                                    success: function(data) {
+                                        
+                                    }
+
+                                });
+                                
+                            }
+
+                        });
+                    }
+
+                });
+            }
+
+        });
+
+
+
+    </script>
+</html>

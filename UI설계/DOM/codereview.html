@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            /* p{
+                background-color: yellow;
+                color: blue;
+                font-weight: 600;
+                font-size: 160%;
+            } */
+        </style>
+    </head>
+    <body>
+        <p style="background-color: yellow; color: blue; font-weight: 600; font-size: 160%;">스타일이 있는 p 태그</p>
+        <input type="text" value="아무 내용이나...">
+        <a href="#" my-attr="header">링크 클릭</a>
+        <a href="#" my-attr="main">링크 클릭</a>
+        <a href="#" my-attr="footer">링크 클릭</a>
+
+    </body>
+    <script>
+        var elem = document.querySelector('p');
+
+        console.log(elem.style.backgroundColor);
+        elem.style.backgroundColor ='green';
+
+        console.log(elem.innerHTML);
+        elem.innerHTML='수정된 p 태그';
+
+        //elem = document.getElementsByTagName('input');
+        elem = document.querySelector('input');
+
+
+        console.log(elem.type);
+        console.log(elem.value);
+
+        elem.type='button';
+        elem.value='click';
+        elem.onclick='alert("hello")'; 
+        elem.setAttribute('onclick', 'change()');
+        function change() {
+            var tags = document.getElementsByTagName('a');
+            console.log(tags);
+
+            var attr;
+            for(var i=0; i<tags.length; i++){
+                attr = tags[i].getAttribute('my-attr')
+                if (attr=='header') {
+                    tags[i].innerHTML='<h1>HEADER</h1>';
+                    tags[i].href='https://www.naver.com';
+                }
+                if (attr=='main') {
+                    tags[i].innerHTML='<h1>MAIN</h1>';
+                }
+                if (attr=='footer') {
+                    tags[i].innerHTML='<h1>FOOTER</h1>';
+                }
+            };
+            
+        }
+        
+    </script>
+</html>

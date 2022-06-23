@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">var, let, const</h3>
+        <p>기존 자바스크립트에서는 var로 변수를 선언했다.</p>
+        <p>ES6 부터는 그 외에도, let, const 가 추가되었다.</p>
+        <p>let : 블록 단위에서 동작하는 변수</p>
+        <p>const : 상수 (static final) / 객체의 경우 일부 수정은 가능</p>
+    </body>
+    <script>    
+        $('title').html($('#title').html());
+        
+        var global = "전역 변수";
+
+        function test() {
+            //var 변수는 함수 영역 스코프 개념이 있어서 같은 이름이라도 함수 안과 밖의 변수가 서로 영향을 주지 않는다
+            //보통 함수 안에서 사용되는 변수에 자주 사용
+            var global = "지역 변수";
+            console.log(global);
+        }
+        test();
+        console.log(global);
+
+        function test2() {
+            var local = "함수 영역"; //var 는 함수 영역 스코프이기 때문에 함수 안에서 같은 이름을 쓰면 영향을 준다
+            if (true) {
+                //var local = "블록 영역";
+                let local = "block area"; //let 은 철저히 블록 안에서만 동작된다
+            }
+            console.log(local);
+        }
+        test2();
+
+        const x = 10;
+        const obj = {title:'const 변수',chapter:1};
+        const arr = [1,2,3,4,5];
+
+        function test3() { //상수 변경
+            //x = 40; //상수는 변경이 불가능하다.
+            //객체는 일부 변경이 가능하다.
+            obj.chapter=3;
+            //obj = {}; //전체 변경은 불가능하다.
+            console.log(obj);
+
+            arr[2] = 'A'; //배열도 일부 변경은 가능
+            console.log(arr);
+            //arr = [10,20,30,40,50]; //역시 전체 변경은 불가능하다.
+        }
+        test3();
+
+
+        console.log(`backtic 문자를 사용하면 ${global} 처럼 변수 내용을 문자열 안에 포함시킬 수 있다`);
+        console.log('우리는 이것을 template literal 이라고 부른다.');
+        console.log('JSP 의 EL TAG 와 겹치므로 JSP 에서는 사용을 자제 하자');
+
+
+
+
+    </script>
+</html>

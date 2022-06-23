@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            .ex{
+                background-color:cadetblue;
+                text-align:center;
+                width:200px;
+                height:200px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="add">클래스 추가</button>
+        <button id="remove">클래스 삭제</button>
+        <button id="toggle">TOGGLE</button>
+        <div>DIV</div>
+    </body>
+    <script>
+        $('#add').click(function(){
+            //div에 다음 스케일을 추가해 보자
+            //'background-color':'cadetblue',
+            //'text-allign':'center',
+            //'width':'200px',
+            //'height':'200px'
+            /* $('div').css({
+                'background-color':'cadetblue',
+                'text-align':'center',
+                'width':'200px',
+                'height':'200px'
+            }); */
+
+            //adClass 는 특정 요소에 원하는 클래스를 넣을 수 있다
+            $('div').addClass('ex');
+        });
+        
+        $('#remove').click(function () {
+            //removeClass 는 특정 요소에 원하는 클래스를 삭제할 수 있다
+            $('div').removeClass('ex');
+        });
+
+        $('#toggle').click(function() {
+            $('div').toggleClass('ex'); //add + remove 가 번갈아가며 수행
+            var sw = $('div').hasClass('ex'); //div 에 ex 라는 클래스가 존재하는가
+            console.log(sw);
+            //버튼을 누를 때 클래스가 추가되는 상황이라면 on으로 표시
+            if (sw == true) {
+                $(this).html('OFF');
+            }
+            //버튼을 누를 때 클래스가 삭제되는 상황이라면 off 로 표시
+            else{
+                $(this).html('ON');
+            }
+        });
+
+
+    </script>
+</html>

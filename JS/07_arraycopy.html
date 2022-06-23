@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        var a = [1,2,3,4,5]; //a 가 담긴 위치 정보만
+        var b = a; //b 에 넣는다
+        console.log("a: ", a);
+        console.log("b: ", b);
+        a[0] = 50;
+        b[4] = 100;
+        console.log("a: ", a);
+        console.log("b: ", b);
+        /* a[0] 의 값, b[4] 의 값을 각각 바꿨으나 a배열과 b배열이 모두 값을 반영
+        왜 그럴까? 
+        우리는 이것을 shallow copy 라고 한다 
+        일반 변수는 대입이지만 배열은 위치 정보이기 때문에 실수가 많이 일어남
+        */
+        var src = ["A",'B',"c",'d','e'];
+        var dest;
+       // //src 에 있는 값을 어떻게 해야 dest 로 복사가 될까?
+       
+       dest = [];
+       for(var i=0; i<src.length; i++){
+           dest[i]=src[i];
+        };
+        console.log(src);
+        console.log(dest);
+        src[0] = 1;
+        dest[5] = 100;
+        console.log(src);
+        console.log(dest);
+        
+        //    dest = [];
+        //    for(var i=0; i<=4; i++){
+        //        dest.push(src[i]);
+        //        console.log("넣어진 값: ", dest[i]);
+        //    }
+        //    console.log("dest의 값: ", dest);
+        //    src[0] = 50;
+        //    dest[5] = 100;
+        //    console.log("추가 후 src의 값: ", src);
+        //    console.log("추가 후 dest의 값: ", dest);
+    </script>
+</html>

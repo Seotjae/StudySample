@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">CLASS</h3>
+        <p>클래스는 우리가 자바에서 사용하는 클래스와 유사하다.</p>
+        <p>생성자가 존재하고, this 도 사용한다.</p>
+        <p>객체화, 상속도 가능하다.</p>
+    </body>
+    <script>    
+        $('title').html($('#title').html());
+
+        class Car{ //클래스 선언
+
+            constructor(color,name,price){ //생성자
+                this.color = color; //this를 붙여주면 따로 필드 선언을 안해도 된다.
+                this.name = name; //
+                this.price = price;
+            }
+
+            //class 안에서는 함수 선언 시 키워드가 필요없다.
+            getInfo = () => { //화살표 함수
+                console.log(this.name+' 의 색상 : '+this.color);
+                console.log(this.name+' 의 가격 : '+this.price);
+            }
+
+            start() { //일반 함수
+                console.log(this.name+' 의 시동을 걸다.');
+            }
+        }
+
+        //클래스 사용
+        var mycar = new Car('red','Ferrari 488','800000000');
+        mycar.getInfo();
+        mycar.start();
+        console.log(mycar.name); //클래스의 특정 필드(속성)을 가져올 수도 있다.
+
+
+        //상속
+        class OptionCar extends Car{
+            constructor(color,name,price,option){
+                super(color,name,price); //부모 생성자 (부모 키워드 super 도 사용 가능)
+                this.option = option;
+            }
+            getOption = () => console.log(super.name+'의 옵션은 '+this.option+'입니다.');
+        }
+
+        let car = new OptionCar('red','Ferrari 488','800000000','Full Option');
+        car.start();
+        car.getOption();
+
+
+
+
+
+    </script>
+</html>

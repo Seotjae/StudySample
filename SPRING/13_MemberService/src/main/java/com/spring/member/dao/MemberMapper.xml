@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- url 에는 태그의 정의가 들어있기 때문에 url이 없을 경우 태그를 인식하지 못함 -->
+<!DOCTYPE mapper PUBLIC   "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+> 
+
+<!-- 이 XML 이 어떤 interface 와 연결되는지 설정 -->
+<mapper namespace="com.spring.member.dao.MemberDAO">
+	
+	<select id="login" resultType="int">
+		select count(id) from member where id=#{param1} and pw=#{param2}
+	</select>
+	
+	<select id="list" resultType="com.spring.member.dto.MemberDTO">
+		select * from member
+	</select>
+	
+	<insert id="join" parameterType="com.spring.member.dto.MemberDTO">
+		insert into member(id,pw,name,age,gender,email) values(#{id},#{pw},#{name},#{age},#{gender},#{email})
+	</insert>
+	
+	
+	
+	<!-- 
+		dynamic query : 쿼리문 안에서 if 나 forEach 등을 사용할 수 있다
+	 -->
+	<!-- <insert id="join_map" parameterType="hashmap">
+		insert into member(id,pw,name,age,gender,email) 
+			values
+			<if test="email.equals('')">
+				(#{id},#{pw},#{name},#{age},#{gender},'없음')
+			</if>
+			<if test="!email.equals('')">
+				(#{id},#{pw},#{name},#{age},#{gender},#{email})
+			</if>
+	</insert> -->
+	
+	<!-- if ~ else 처럼 -->
+	<insert id="join_map" parameterType="hashmap">
+		insert into member(id,pw,name,age,gender,email) 
+			values
+			<choose>
+				<when test="email.equals('')">
+					(#{id},#{pw},#{name},#{age},#{gender},'없음')
+				</when>
+				<otherwise>
+					(#{id},#{pw},#{name},#{age},#{gender},#{email})
+				</otherwise>
+			</choose>
+	</insert>
+	
+
+	
+	
+	<!-- 
+		문자열과 변수를 하치는 방법은 DB 마다 다르다 
+		[ORACLE]	'%'||#{keyword}||'%'
+		[MYSQL]	CONCAT('%',#{keyword},'%')
+		[MSSQL]	'%'+#{keyword}+'%'	
+	-->
+	<!--
+		아무 검색어도 없을 경우 select * from member where 쿼리가 실행
+		그래서 오류가 난다.
+		해결 방법은 <where 태그 사용>
+	-->
+	<select id="search" resultType="com.spring.member.dto.MemberDTO" parameterType="hashmap">
+		select * from member
+		<where>
+			<if test="opt == 'id' and keyword !=''">
+				id like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="opt == 'name' and keyword !=''">
+				name like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="opt == 'email' and keyword !=''">
+				email like CONCAT('%',#{keyword},'%')
+			</if>
+		</where> 
+	</select>
+	
+	<!-- 
+		pw 만 바꿀 경우
+		update member set pw=#{pw} where id=#{id}
+		
+		pw 와 name 만 바꿀 경우
+		update member set pw=#{pw}, name=#{name}where id=#{id}
+		
+		email 만 바꿀 경우
+		update member set email=#{email} where id=#{id}
+	-->
+	<!-- 
+		update 의 경우 항목이 여러 개일 경우 콤마(,) 에 의한 에러가 발생할 수 있다 
+		<set> 태그를 사용해서 해결할 수 있다
+	-->
+	<update id="update" parameterType="hashmap">
+		update member 
+			<set>
+				<if test="pw != '' ">
+					pw=#{pw},
+				</if>
+				<if test="name != '' ">
+					name=#{name},
+				</if>
+				<if test="email != '' ">
+					email=#{email}
+				</if>
+			</set>
+			where id = #{id}
+		
+	</update>
+	
+	<!-- 
+		이름이 김지훈 이거나 홍길동 인 회원의 정보 가져오기
+		select * from member where name = '김지훈' or name = '홍길동'
+		select * from member where name in ('김지훈', '홍길동')
+		이름이 김지훈 이거나 홍길동 이거나 테스터 인 회원의 정보 가져오기
+		select * from member where name = '김지훈' or name = '홍길동' or name = '테스터'
+		select * from member where name in ('김지훈', '홍길동',테스터)
+	 -->
+	<!-- <select id="multi" resultType="com.spring.member.dto.MemberDTO" parameterType="list">
+	 	select * from member 
+	 		<where>
+		 		<foreach collection="list" item="name" separator="or">
+			 		name = #{name}
+		 		</foreach>
+		 	</where>
+	 </select> -->
+	 
+	 <!--
+	 	IN 은 OR 보다 속도가 우수하다.
+	 	select * from member where name in ('김지훈','홍길동','테스터')
+	 -->
+	 <select id="multi" resultType="com.spring.member.dto.MemberDTO" parameterType="list">
+	 	select * from member
+	 		<where>
+	 			name in
+		 		<foreach collection="list" item="name" separator="," open="(" close=")" >
+			 		#{name}
+		 		</foreach>
+	 		</where>
+	 </select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>sprite animation</title>
+        <style>
+            #screen{
+                width:256px;
+                height: 256px;
+                top: 60px;
+                left: 15%;
+                position: absolute;
+                background: url(sprite.png) 0 0;
+            }
+            #bg{
+                width:600;
+                height: 400;
+                background: url(background.jpg) 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="screen"></div>
+        <div id="bg"></div>
+        <button onclick="start()">start</button>
+        <button onclick="stop()">stop</button>
+    </body>
+    <script>
+        var ani = [-21,-297, -538, -790,-1066, -1310];
+        
+        var x=0;
+        var obj;
+        var screen = document.getElementById("screen");
+        var bg = document.getElementById("bg");
+        function start(){
+            var i=0;
+            obj = setInterval(function(){
+                screen.style.background="url(sprite.png) "+ani[i]+"px 0";
+                bg.style.background="url(background.jpg) "+x+"px 0";
+                i++;
+                x = x+5*-2;
+                console.log();
+                if(i==ani.length){
+                    i = 0;
+                }
+                if(x <= -1000){
+                    stop();
+                }
+            },100);            
+        }
+        
+        function stop(){
+            clearInterval(obj);
+        }
+        
+
+    </script>
+</html>

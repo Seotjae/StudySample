@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                background-color: green;
+                margin: 5px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="viz">FADE IN</button>
+        <button id="inviz">FADE OUT</button>
+        <button id="toggle">ON</button>
+        <div></div>
+        <br/>
+        <img src="./btn.png" alt="버튼 이미지"/>
+    </body>
+    <script>
+
+        function change(){
+                if ($('div').css('display') == 'none') {
+                    $('#toggle').html('OFF');
+                }else{
+                    $('#toggle').html('ON');
+                }
+            };
+
+        $('#viz').click(function(){ //익명함수는 코드 중복이 절대로 없을 경우
+            //display:block 으로 영역을 먼저 잡아 놓고 opacity를 조절
+            $('div').fadeIn('fast',change); //callback 함수를 부를 때 change( ) 를 붙이면 바로 실행된다
+        });       
+        $('#inviz').click(function(){
+            //opacity 를 0으로 만든 후 display:none 으로 영역을 지워버림
+            $('div').fadeOut('fast',change);
+        });
+        $('#toggle').click(function(){
+            $('div').fadeToggle('fast',change);
+        });
+        
+        $('img').hover(
+            function() {
+            $(this).fadeTo('slow',0.2); //fadeTo 는 opacity 를 특정 값까지 변화시킨다
+        },  function(){
+            $(this).fadeTo('slow',1);
+        });
+        
+        // $('#toggle').click(function(){
+        //     $('div').fadeToggle('fast', function change(){
+        //         console.log($('div').css('display'));
+        //         //on, off  
+        //         if ($('div').css('display') == 'none') { //css 의 display 속성을 활용
+        //             $('#toggle').html('OFF');
+        //         }else{
+        //             $('#toggle').html('ON');
+        //         }
+        //     });
+        // });
+    </script>
+</html>

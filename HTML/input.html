@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset="UTF-8"
+        <title>INPUT</title>
+    </head>
+    <body>
+        <!--button: 어떤 이벤트를 발생시키는데 가장 많이 이용-->
+        <!--name은 value가 서버로 보내지는 상황에서만 필요-->
+        <input type="button" value="click me"/>
+        <button>CLICK ME</button>
+
+        <fieldset><!--특정 영역을 감싸준다-->
+            <legend>text & password</legend><!--fieldset에 대한 제목-->
+            <form><!--서버로 무언가를 보낼때는 submit과 form이 필수다-->
+                ID : <input type="text" name="id" value="" placeholder="아이디를 입력하세요"/>
+                PW : <input type="password" name="pw" value="" placeholder="비밀번호를 입력하세요"/>
+                <input type="submit" value="로그인"/>
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>checkbox & radio</legend>
+            <!--체크박스는 중복 선택이 가능할 경우 사용한다-->
+            <input type="checkbox" name="vehicle1" value="Bike"/>Bike
+            <input type="checkbox" name="vehicle1" value="Car"/>Car
+            <input type="checkbox" name="vehicle1" value="Boat"/>Boat
+            <input type="checkbox" name="vehicle1" value="Cycle"/>Cycle
+            <br/><br/>
+            <!--라디오버튼은 단일 선택일 경우 사용한다 (항목 이름이 같아야 그 중 하나만 선택)-->
+            <input type="radio" name="gender" value="male"/>male
+            <input type="radio" name="gender" value="female"/>female
+        </fieldset>
+
+        <!--file upload 시 사용-->
+        <fieldset>
+            <legend>File</legend>
+            <form>
+                select file: <input type="file" name="upload" value="">
+                <input type="submit" value="파일 올리기"/>
+            </form>
+        </fieldset> 
+
+        <!--hidden: text와 하는 일은 똑같다, 다만 사용자에게 보이지 않는다-->
+        <fieldset>
+            <legend>text & hidden</legend>
+            <input type="text" name="userName" value="최성재">
+            <input type="hidden" name="nickName" value="choi"><!--보안적인 것이 아니라 미적인 부분을 위해 가림 (ex.컴퓨터 선정리)-->
+        </fieldset>
+
+        <!--여러 옵션 중 하나를 선택: radio와 비슷?-->
+        <fieldset>
+            <legend>select</legend>
+            <select name="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi" selected>Audi</option> <!--기본은 가장 위 항목이 선택, selected 사용으로 지정 가능-->
+            </select>
+        </fieldset>
+
+        <!--HTML5 에서 사용하는 것들-->
+        <fieldset>
+            <legend>E-mail</legend>
+            <form>
+                <!--required 는 입력하지 않으면 전송시키지 않는 옵션(HTML5 아님)-->
+                E-mail: <input type="email" name="mail"/><!--email 은 @를 포함한 이메일 형태로 입력해야 전송이 된다-->
+                <input type="submit"/>
+            </form>
+            <b>IE9 또는 사파리 에서 지원되지 않는다</b>
+        </fieldset>
+
+        <fieldset>
+            <legend>color</legend>
+            원하는 색상을 선택하세요: <input type="color" name="FavorColor"/>
+        </fieldset>
+
+        <fieldset>
+            <legend>date & month</legend>
+            date: <input type="date" name="dDay"/>
+            month: <input type="month" name="sMonth"/>
+        </fieldset>
+
+        <fieldset>
+            <form>
+                <legend>number & range</legend>
+                NUMBER(1~10): <input type="number" name="quantity" min="1" max="10"/>
+                RANGE(1~10): <input type="range" name="range" min="0" max="10" step="2" value="0"/>
+                <input type="submit"/>
+            </form>
+        </fieldset>
+    </body>
+</html>

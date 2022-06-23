@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- 1. id 를 입력하여 admin 일 경우 링크가 구디아카데미
+        2. id 를 입력하여 admin 일 경우 링크가 구글
+        3. 초기 상태의 링크는 아무곳도 이동되지 않음 -->
+        ID : <input type="text"/>
+        <button>확인</button>
+        <br/>
+        <br/>
+        <a href="#">링크 이동</a>
+
+    </body>
+    <script>
+        $('button').on('click',function(){ //셀렉터로 button 태그 요소를 불러와 클릭되는 이벤트가 발생하면 실행될 함수 입력
+            var value = $('input').val();
+            if (value == 'admin') { //셀렉터로 input 태그 요소의 value의 값을 불러오고 if 문을 통해 'admin' 과 비교
+                $('a').attr('href','http://www.gdu.co.kr/main/main.html'); //값이 'admin'과 같다면 a태그 요소의 href 속성의 값에 이 링크를 넣는다
+            }else if (value != '') { //값이 'admin' 이 아니고 '' 공백이 아니면
+                $('a').attr('href','http://www.google.com'); //a태그 요소의 href 속성의 값에 이 링크를 넣는다
+            } 
+        });
+        
+    </script>
+</html>

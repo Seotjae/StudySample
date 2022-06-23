@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./img01.jpg">
+        <style>
+            div{
+                height: 20px;
+                border: 3px solid yellowgreen;
+                margin: 10px;
+                text-align: center;
+            }
+            div.ex1{width: 800px;}
+            div.ex2{min-width: 800px;}
+            div.ex3{max-width: 800px;}
+        </style>
+    </head>
+    <body>
+        <!-- 800px 고정 -->
+        <div class="ex1">width : 800px</div>
+        <!-- 최소 800px을 유지하고 그 이상이 되면 늘어난다 -->
+        <div class="ex2">min-width : 800px</div>
+        <!-- 최대 800px을 유지하고 그 이하가 되면 줄어든다 -->
+        <div class="ex3">max-width : 800px</div>
+    </body>
+</html>

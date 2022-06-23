@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- url 에는 태그의 정의가 들어있기 때문에 url이 없을 경우 태그를 인식하지 못함 -->
+<!DOCTYPE configuration PUBLIC
+	"-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd"
+> 
+
+<!-- 축약할 패키지 경로 설정 -->
+<configuration>
+	<typeAliases>
+		<package name="com.spring.member.dto"/>
+	</typeAliases>
+</configuration>
+
+

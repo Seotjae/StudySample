@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF=8">
+        <title>PADDING</title>
+        <link rel="icon" href="./img02.jpg">
+        <style>
+            table, td, th{
+                border: 1px solid;
+                border-collapse: collapse;
+            }
+            /* th, td{
+                padding: 10px; 상하좌우 모두 10px 씩
+                padding-left: 10px; 한쪽 방향만 10px 씩
+                padding: 10px 20px 10px 20px; 12-3-6-9
+                padding: 10px 20px; 12&6 3&9
+            } */
+            /* class="name" padding 좌우 20px*/
+            .name{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            /* class="age" padding 좌우 10xp */
+            .age{
+                padding: 0px 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>이름</th> <th>나이</th>
+            </tr>
+            <tr>
+                <td class="name">홍길동</td> <td class="age">70</td>
+            </tr>
+            <tr>
+                <td class="name">고길동</td> <td class="age">100</td>
+            </tr>
+            <tr>
+                <td class="name">나길동</td> <td class="age">40</td>
+            </tr>
+        </table>
+
+    </body>
+</html>

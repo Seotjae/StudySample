@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- 가장 많이 쓰는 것 -->
+        <button onclick="spliceDel()">splice delete</button>
+        <button onclick="spliceAdd()">splice add</button>
+        <button onclick="sliceEx()">slice</button>
+        <button onclick="splitEx()">split</button>
+        <br/><br/>
+        <!-- 그렇게 많이 안쓰는 것 -->
+        <button onclick="sortEx()">정렬</button>
+        <button onclick="reverseEx()">역정렬</button>
+        <button onclick="concatEx()">배열 합치기</button>
+        <br/><br/>
+        <!-- 거의 안쓰는 것, 대체제가 있거나 사용시 위험 -->
+        <button onclick="valueofEx()">value of</button>
+        <button onclick="joinEx()">join</button>
+        <button onclick="deleteEx()">delete</button>
+    </body>
+    <script>
+
+        //문자열은 싱글쿼터('') 로
+        var arry = ['마', '가', '다', '바', '나', '라', '사']; 
+
+        //splice 는 배열에서 특정 요소를 삭제하거나 끼워 넣을 때 사용된다
+        function spliceDel() {
+            //console.log("spliceDel 작동");
+            //array.splice(해당 인덱스 부터 , 삭제할 갯수 )
+            console.log('실행 전: ', arry);
+            arry.splice(2,2);
+            console.log('실행 후: ', arry);
+        };
+        function spliceAdd() {
+            //console.log("spliceAdd 작동");
+            //array.splice(해당 인덱스 부터 , 삭제할 갯수 , 추가할 값);
+            console.log('실행 전: ', arry);
+            // arry.splice(2,2,'C','D'); //수정: 2번 인덱스부터 2개 지우고 C,D 를 추가
+            arry.splice(2,0,'C','D');
+            console.log('실행 후: ', arry);
+        };
+
+        
+        function sliceEx() {
+            //console.log("sliceEx 작동");
+            //array.slice(보여줄 인덱스, 버릴 인덱스)
+            //버릴 인덱스를 지정하지 않으면 끝까지 보여준다
+            console.log('실행 전: ', arry);
+            var newArr = arry.slice(1,3); //slice 는 원본을 건드리지 않는다 (새로운 변수에 담는다)
+            console.log('실행 후: ', newArr);
+        };
+
+        //특정한 구분자를 기준으로 문자열을 끊어서 배열에 담아서 가져온다
+        function splitEx() {
+            //console.log("splitEx 작동");
+            var text = '오늘은 날씨가 춥지도 않고 참 좋네요';
+            var words = text.split(' '); //공백을 기준으로 끊어달라고 요청
+            console.log(words);
+        };
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function sortEx() {
+            console.log("sortEx 작동");
+            console.log('실행 전: ', arry);
+            arry.sort();
+            console.log('실행 후: ', arry);
+        };
+        function reverseEx() {
+            console.log("reverseEx 작동");
+            console.log('실행 전: ', arry);
+            arry.reverse(); //내림차순이 아니라 이전 배열을 뒤집는 역할
+            console.log('실행 후: ', arry);
+        };
+
+        function concatEx() {
+            //console.log("concatEx 작동");
+            //A 라는 배열과 다른 배열들을 합쳐 새로운 배열을 생성
+            //arry1.concat(arry2,arry3,arry4, ... );
+            var arr1 = [1,2,3,4,5];
+            var arr2 = ['A','B','C','D','E'];
+            var newArr = arr1.concat(arr2);
+            console.log(newArr);
+        };
+
+
+        function valueofEx() {
+           // console.log("valueofEx 작동");
+           console.log(arry.valueOf());
+           console.log(arry);
+        };
+        function joinEx() {
+            //console.log("joinEx 작동");
+            console.log(arry.join('*')); //배열의 값 사이를 특정한 구분자로 연결해서 보여준다
+        };
+        function deleteEx() {
+            //console.log("deleteEx 작동");
+            console.log('실행 전: ', arry);
+            delete arry[2]; //해당 자리를 지워서 비움 상태로 만들기 때문에 위험하다 (에러를 일으킬 소지가 있다)
+            //그래서 삭제를 할 경우 slice 나 splice 를 활용하는 것이 더 안전하다
+            arry[2] = ''; // 또는 empty 보단 공백처리를 하는 것이 낫다
+            console.log('실행 후: ', arry);
+        };
+
+
+    </script>
+</html>

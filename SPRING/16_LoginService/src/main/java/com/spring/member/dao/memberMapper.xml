@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- url 에는 태그의 정의가 들어있기 때문에 url이 없을 경우 태그를 인식하지 못함 -->
+<!DOCTYPE mapper PUBLIC   "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+> 
+
+<!-- 이 XML 이 어떤 interface 와 연결되는지 설정 -->
+<mapper namespace="com.spring.member.dao.MemberDAO">
+	
+	<select id="login" resultType="String">
+		select id from member where id=#{param1} and pw=#{param2}
+	</select>
+	
+	
+</mapper>

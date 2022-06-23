@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <ol>
+            <li>버튼을 누르면 h1 태그 내의 글자 색상이 변경된다</li>
+            <li>색상은 '빨,주,노,초,파,남,보' 이다</li>
+            <li>보라색까지 왔을 때 버튼을 누르면 다시 빨강색으로 돌아가야 한다</li>
+        </ol>
+        <h1 id="msg">글자 색상이 변경됩니다.</h1>
+        <button id='btn'>색상변경</button>
+    </body>
+    <script>
+        var txt = document.getElementById('msg');
+        var btn = document.getElementById('btn');
+        var clr = ['red','orange','yellow','green','blue','navy','purple'];
+        //console.log(msg, btn);
+        var i = 0;
+        btn.addEventListener('click',function(){ //버튼 태그 객체에 클릭이라는 이벤트가 발생하면 뒤의 함수를 작동
+            console.log(clr[i]);
+            txt.style.color=clr[i]
+            i++
+            if (i==clr.length) {
+                i=0;
+            }
+        });
+
+
+    </script>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <p id="ex1" style="color: blue; font-size: 32px;">스타일이 적용된 텍스트</p>
+        <p id="ex2" >스타일이 적용안된 텍스트</p>
+        <button>css 적용</button>
+    </body>
+    <script>
+        //#ex1 인 요소의 color 값 알아보기
+        var color = $('#ex1').css('color');
+        console.log(color);
+
+        //#ex1 인 요소의 font-sizw 값 알아보기
+        var size = $('#ex1').css('font-size');
+        console.log(size);
+
+        //버튼 태그를 누르면 ex1 에 있는 css 가 ex2 에 적용 되도록 해보자
+        $('button').click(function(){
+            console.log('작동');       
+            /* $('#ex2').css('color',color); //한번에 하나의 속성만 변경 가능
+            $('#ex2').css('font-size',size); */
+
+            //{} 형태로 속성과 값을 넣으면 여러 속성을 변경할 수 있다
+            $('#ex2').css({'color':color, 'font-size':size});
+        });
+    </script>
+</html>

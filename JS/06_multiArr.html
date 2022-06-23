@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="button" value="층 추가" onclick="addFloor()"/>
+    </body>
+    <script>
+        var royalApart = [
+            [0,1,2,3,4],
+            [10,11,12,13,14],
+            [20,21,22,23,24],
+            [30,31,32,33,34],
+            [40,41,42,43,44]
+        ];
+        console.log(royalApart);
+        //3층 2호의 값은?
+        console.log(royalApart[0]);
+        console.log(royalApart[2]);
+        console.log(royalApart[3][2]);
+        //2층 2호의 값은?
+        console.log(royalApart[2][2]);
+        //4층 4호의 값은?
+        console.log(royalApart[4][4]);
+
+        var apart = []; //아파트
+        var floor = []; //층
+        //위 두개의 변수와 push를 활용해서 4층 4호 아파트 만들기
+        // var i = 0;
+        // function addFloor() {
+        //     floor = [i+"층 0호",i+"층 1호",i+"층 2호",i+"층 3호", i+"층 4호"];
+        //     apart.push(floor);
+        //     console.log(apart);
+        // }
+        function addFloor() {
+            for(var i=0; i<=4; i++){
+            floor = [i+"층 0호",i+"층 1호",i+"층 2호",i+"층 3호", i+"층 4호"];
+            apart.push(floor);
+            }
+            console.log(apart);
+        }
+
+    </script>
+</html>

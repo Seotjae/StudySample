@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">*The For/of Loop</h3>
+        <p>For Of 는 JAVA 의 향상된 For 와 비슷하다.</p>
+        <p>For of 는 Array, String, NodeLists 등 다양한 자료구조를 다룬다.</p>
+    </body>
+    <script>    
+        $('title').html($('#title').html());
+        
+        var array = [1,2,3,4,5];
+        var string = 'forEach 와 for of 의 차이';
+
+        //1. for each
+        /*
+        array.forEach((item,idx) => {
+            console.log(idx,item);
+            if (idx == 2) { //forEach 문에서는 반복 도중 break 를 걸 수 없다.
+                break;
+            }
+        });
+        string.forEach(item => console.log(item)); //forEach 에서는 문자열을 하나씩 뺄 수 없다.
+        */
+
+        //2. for of
+        for (let item of array) {
+            console.log(item);
+            if (item == 3) { //for of 를 사용하면 break 사용이 가능
+                break;
+            }
+        }
+
+        for (const item of string) {
+            console.log(item); //for of 는 문자열에도 사용이 가능
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</html>

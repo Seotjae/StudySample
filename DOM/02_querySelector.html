@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h2>Element Control</h2>
+        <h3>query selector</h3>
+        <p>쿼리 셀렉터는 css의 셀렉터를 차용한 것이다.</p>
+        <p class="ex">하지만 복수개의 엘리먼트를 수용하지 못한다.</p>
+        <span id="sample"></span>
+        <br/>
+        <a href="http://www.w3schools.com/jsref/met_document_queryselector.asp" target="_blank">관련 내용은 여기서 확인</a>
+        <div>
+            <p>특정 요소의 자식 요소도 선택 가능</p>
+        </div>
+        <button>BUTTON</button>
+        <button>BUTTON</button>
+        <button class="btn">BUTTON</button>
+        <button class="btn">BUTTON</button>
+        <button class="btn">BUTTON</button>
+
+    </body>
+    <script>
+        var elem;
+        elem = document.querySelector('.ex'); //class='ex'
+        console.log(elem);
+        elem = document.querySelector('#sample');
+        console.log(elem);
+        //복수개를 가져올 수 없다 (가장 위의 것만 가져온다)
+        elem = document.querySelector('p');
+        console.log(elem);
+
+        //다양한 방식으로 가져올 수 있다
+        elem = document.querySelector('div p');
+        console.log(elem);
+        elem = document.querySelector('a[target="_blank"]');
+        console.log(elem);
+
+        //복수개를 가져오기 위한 방법이 생김
+        elem = document.querySelectorAll('button');
+        console.log(elem);
+        elem = document.querySelectorAll('button.btn');
+        console.log(elem);
+
+        //다수의 요소를 가져오는 기능들은 배열에 담아서 가져온다 (그게 단 한개 일지라도)
+        elem = document.querySelectorAll('#sample');
+        console.log(elem);
+    </script>
+</html>

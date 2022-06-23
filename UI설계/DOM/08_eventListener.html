@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            #eventZone{
+                width: 250px;
+                height: 250px;
+                background-color: yellowgreen;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="eventZone"></div>
+        <span id="msg"></span>
+        <h4>mouse position : <span id="pos"></span> </h4>
+    </body>
+    <script>
+        //사용할 요소 확보
+        var zone = document.getElementById('eventZone');
+        var msg = document.getElementById('msg');
+        var position = document.getElementById('pos');
+
+        //click 하면 msg에 click 이라고 문구 표시
+        zone.addEventListener('click', function(){
+            msg.innerHTML='CLICK';
+            //zone 의 backgroundcolor 를 orange
+            zone.style.backgroundColor='orange';
+        });
+        //dblclick 하면 msg에 double click 이라고 문구 표시
+        zone.addEventListener('dblclick', function(){
+            msg.innerHTML='DOUBLE CLICK';
+            //zone 의 backgroundcolor 를 yellow
+            zone.style.backgroundColor='yellow';
+        });
+        //mouseenter 하면 msg 에 mouse enter 라고 문구 표시
+        zone.addEventListener('mouseenter', function(e){
+            msg.innerHTML='MOUSE ENTER';
+            //zone 의 backgroundcolor 를 blue
+            //zone.style.backgroundColor='blue';
+            e.target.style.backgroundColor='blue'; //e.target 은 this 와 같다
+        });
+        //mouseout 하면 msg 에 mouse out 이라고 문구 표시
+        zone.addEventListener('mouseout', function(e){
+            msg.innerHTML='MOUSE OUT';
+            //zone 의 backgroundcolor 를 yellowgreen
+            //zone.style.backgroundColor='yellowgreen';
+            e.target.style.backgroundColor='yellowgreen';
+        });
+
+        //document 에 이벤트를 걸면 html 문서 전체에 이벤트가 걸린다
+        document.addEventListener('mousemove', function(evt){
+            console.log(evt);
+            pos.innerHTML='X:'+evt.screenX+' / Y:'+evt.screenY;
+        });
+
+
+
+    </script>
+</html>

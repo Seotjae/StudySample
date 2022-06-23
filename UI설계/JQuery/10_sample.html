@@ -1,0 +1,68 @@
+<html>
+	<head>
+        <link rel="icon" href="./favicon.ico">
+        <title>j-query 강좌</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<style>		
+			.item div{
+				display: inline;
+			}
+		
+			div.item{
+				width:80%;
+				height: 30px;
+				border: 1px solid lightgray;
+				padding: 10 0 0 10;
+				font-size: 13;
+				cursor:pointer;
+				margin-top:5px;
+			}
+
+			div.cnt{
+				float:right;
+				width: 20px;
+			    height: 20px;
+				border: 1px solid lightgray;
+    			text-align: center;
+				margin-right: 10px;
+				color: orange;
+				font-weight:600;
+
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="item">
+			<div>A 아이템 구매 수</div>
+			<div class="cnt" >0</div>
+		</div>
+		<div class="item">
+			<div>B 아이템 구매 수</div>
+			<div class="cnt">0</div>
+		</div>
+		<div class="item">
+			<div>C 아이템 구매 수</div>
+			<div class="cnt">0</div>
+		</div>
+	</body>
+	<script>
+		//$( selector ).html( )
+		//$( selector ).html( 'A' )
+		//var b = parseInt (a); a 라는 문자열을 숫자로 변경해서 b 변수에 담는다
+		// var a;
+		// var b;
+		// $('.item').click(function(){ //내가 한 것
+		// 	a = $(this).find('.cnt').html();
+		// 	b = parseInt(a)+1;
+		// 	$(this).find('.cnt').html(b);
+		// });
+		$('div.item').click(function(){ 
+			var cnt = parseInt($(this).find('.cnt').html());
+			cnt++;
+			$(this).find('.cnt').html(cnt);
+		});
+
+
+	</script>
+</html>

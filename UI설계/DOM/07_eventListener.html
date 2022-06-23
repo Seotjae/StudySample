@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>event listener</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h4 id="msg">FOCUS NULL</h4>
+        <input id="txtinput" type="text"/>
+    </body>
+    <script>
+        var txtinput = document.getElementById('txtinput');
+        var msg = document.getElementById('msg');
+        console.log(txtinput, msg);
+        //이벤트걸 요소.addEventListener('이벤트명', 호출할함수명);
+        txtinput.addEventListener('focusin',fcsin);
+        txtinput.addEventListener('focusout',fcsout);
+
+        function fcsin() {
+            console.log('focus in');
+            //콘솔 내용을 <h4 id="msg"> 에 표시
+            msg.innerHTML='FOCUS IN';
+            txtinput.style.backgroundColor='skyblue';
+        };
+        function fcsout() {
+            console.log('focus out');
+            //콘솔 내용을 <h4 id="msg"> 에 표시
+            msg.innerHTML='FOCUS OUT';
+            txtinput.style.backgroundColor='lightpink';
+        };
+
+        //딱 여기서만 쓸거면 익명함수를 쓰는게 낫다
+        txtinput.addEventListener('keyup',function(e){
+            //console.log('key up');
+            console.log(e); //이벤트 수행 시 해당 이벤트 객체를 얻을 수 있다
+            //중급 : 이벤트 객체를 자주 살펴라
+            msg.innerHTML=e.keyCode;
+            if (e.keyCode == 13) {
+                alert('전송');
+            }
+        });
+
+    </script>
+</html>

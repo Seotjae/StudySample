@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+<!-- 이 XML 이 어떤 interface 와 연결되는지 설정 -->
+<mapper namespace="spring.ajax.paging.dao.BoardDAO">
+
+	<select id="list" resultType="question">
+		SELECT idx, subject, bHit FROM bbs 
+			ORDER BY idx DESC
+			LIMIT #{param1} OFFSET #{param2}
+	</select>
+	
+	<select id="allCount" resultType="int">
+		SELECT COUNT(idx) FROM bbs
+	</select>
+	
+	
+	
+	
+	
+</mapper>

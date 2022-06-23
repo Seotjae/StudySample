@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>POSITION</title>
+        <link rel="icon" href="./no-repeat.png">
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                text-align: center;
+            }
+            /* position : 특정 요소의 위치속성을 지정해 준다 (이동시 참조지점을 지정) */
+            div.static{
+                position: static; /* relative 의 기준 -> 일반적으로 화면의 최상단 최좌측에 지정됨 */
+                background-color: yellow;
+            }
+            div.relative{ /* 옆의 요소와 연관되어 움직임 (static이 없으면 옆에 있는 relative를 기준으로 삼는다) */
+                position: relative;
+                background-color: aqua;
+                top: 1000px;  /* static 또는 다른 relative 의 기준으로 이만큼 움직인다 */
+                left: 200px;
+            }
+            /*
+            1. 부모를 기준으로 움직인다 
+            2. 주변 요소를 신경쓰지 않고 움직인다 (레이어 팝업)
+            */
+            div.absolute{
+                position: absolute;
+                border: 3px solid red;
+                top: 50%;
+                left: 50%;
+            }
+            div.fixed{ /* 고정되어서 움직이지 않는다 (따라다니는 메뉴) */
+                position: fixed;
+                background-color: coral;
+                top: 10%;
+                right: 5%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="static">position:static</div>
+        <div class="relative">position:relative
+            <div class="absolute">position:absolute</div>
+        </div>
+        <div class="fixed">position:fixed</div>
+    </body>
+</html>

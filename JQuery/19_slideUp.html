@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            div{
+                position: absolute;
+                width: 200px;
+                height: 50px;
+                top: 200px;
+                float: left;
+            }
+            .first{
+                background-color: cadetblue;
+                overflow: visible;
+            }
+            .second{
+                background-color: coral;
+                left: 220px;
+            }
+            .third{
+                background-color: darkturquoise;
+                left: 430px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+    </body>
+    <script>
+        $('div').hover(
+            function(e){
+                console.log($(this)); //이벤트가 일어난 당사자
+                console.log($('div').not(this)); //div 중에서 이벤트가 일어난 당사자를 뺀 나머지
+                $(this).animate({'height':200, 'top':50},'slow','swing');
+            }, 
+            function(){
+                $(this).animate({'height':50,'top':200},'slow','swing');
+            });
+    </script>
+</html>

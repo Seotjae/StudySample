@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <button onclick="popup(1)">회원가입</button>
+        <button onclick="popup(2)">삭제</button>
+        <button onclick="popup(3)">입장</button>
+
+    </body>
+    <script>
+        function popup(num) {
+            if (num==1) {
+                //window는 생략 가능
+                window.alert('정보를 모두 입력해 주세요!');
+            }
+            if (num==2) {
+                //확인과 취소에 따라 true / false 반환
+                var result = confirm('정말로 삭제 하시겠습니까?');
+                console.log('result : ',result);
+            }
+            if (num==3) {
+                //입력한 값을 반환
+                var name = prompt('당신의 이름을 입력해 주세요!');
+                console.log(name);
+            }
+        };
+
+    </script>
+</html>

@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <button>창열기</button>
+        <button>창닫기</button>
+        <br/>
+        자식 창으로 보낼 값 : <input type="text" id="toChild"/>
+        <button>보내기</button>
+        <br/>
+        자식 창에서 받아온 값 : <input type="text" id="fromChild"/> 
+
+    </body>
+    <script>
+        var btn = document.getElementsByTagName('button'); //이 문서에 있는 버튼태그의 요소들을 불러와 btn에 담음, 배열로 담김
+        console.log(btn); //담은 요소들을 확인
+        var win;
+        btn[0].addEventListener('click',function(){ //창열기 //이벤트리스너로 창열기 버튼에 클릭 이벤트가 발생하면
+            win = window.open('17_child.html','','width=450, height=100'); //가로 450 세로 100의 창에서 17_child.html 를 연다
+            //연 창을 win이라는 변수에 담는다
+        });
+
+        btn[1].addEventListener('click',function(){ //창닫기 //창닫기 버튼에 클릭 이벤트가 발생하면
+            win.close(); //win(창열기 버튼으로 연 창) 을 닫는다 
+        });
+
+        btn[2].addEventListener('click',function(){ //보내기 //보내기 버튼에 클릭 이벤트가 발생하면 함수 실행
+            var val = document.getElementById('toChild').value; //이 문서에 있는 toChild 라는 id를 가진 태그의 요소를 불러와 val 변수에 담음
+            //자식창의 문서에서 ID를 통해 요소를 가져와 value 속성에 val 변수에 담긴 값을 넣어라
+            win.document.getElementById('fromParent').value=val; //창열기 버튼으로 연 창의 문서에서 fromParent 라는 id를 가진 태그의 요소에서
+            //value 속성을 불러와 val 변수를 값에 넣는다
+            /*
+                cross domain issue : 하나의 도메인으로 통신을 해야 한다
+                이 경우 해결을 위해서 웹서버 환경 안에서 실행해야 한다 (live server 설치)
+            */
+        });
+
+        function plus(a,b){
+            alert('부모 함수 호출! 답 : ' + (a+b));
+        }
+
+    </script>
+</html>

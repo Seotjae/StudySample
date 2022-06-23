@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./no-repeat.png">
+        <title>z-index</title>
+        <style>
+            div{
+                width: 300px;
+                height: 300px;
+                text-align: center;
+            }
+            #div1{
+                position: relative;
+                border: 3px dashed green;
+                background-color: yellowgreen;
+                top: 10px;
+                z-index: 10;
+                opacity: 0.5;
+            }
+            #div2{
+                position: absolute;
+                border: 3px dashed red;
+                background-color: orange;
+                top: 250px;
+                left: 20px;
+                z-index: 5;
+                opacity: 0.5;
+            }
+            #div3{
+                position: absolute;
+                border: 3px dashed hotpink;
+                background-color: pink;
+                top: 100px;
+                left: 250px;
+                z-index: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">DIV1</div>
+        <div id="div2">DIV2</div>
+        <div id="div3">DIV3</div>
+    </body>
+</html>

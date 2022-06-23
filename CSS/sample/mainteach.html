@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MAIN</title>
+        <style>
+            .content{
+                width: 100%;
+                height: 300px;
+                background-image: url("../no-repeat.png");
+                background-repeat: no-repeat;
+                background-size: 200px;
+                background-position: 750 100;
+            }
+            #bg{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background-color: black;
+                opacity: 0.5;
+                z-index: 1;
+                margin: -8px;
+            }
+            div.notice{
+                width: 400px;
+                height: 300px;
+                position: absolute;
+                background-color: white;
+                z-index: 3;
+                top: 15%;
+                left: 35%;
+            }
+            p{
+                font-size: 18px;
+            }
+            p.title{
+                text-align: center;
+                font-weight: 600;
+                font-size: 23px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div class="notice">
+            <p class="title">공지 사항</p>
+            <p>다음과 같이 공지사항을 알려 드립니다.</p> 
+            <p>이런저런 내용들...</p>
+            <p>이런저런 내용들...</p>
+            <p>이런저런 내용들...</p>
+            <a href="#">닫기</a>
+        </div>
+        
+        <iframe src="./naviteach.html" width="100%" height="50px" frameborder="0" scrolling="no"></iframe>
+        <h3>메인 페이지</h3>
+        <hr/>
+        <div class="content">
+            <small>NHN엔터테인먼트</small>가 <b>카카오</b>를 상대로 특히 침해 소송을 벌인 것과 관련해,<br/> 
+            카카오가 제기한 <mark>특허 무효</mark> 심판 <i>3건 중 2건</i> 에서 카카오가 승소했다.<br/>
+            <br/>
+            카카오는 14일 <del>NHN엔터테인먼트</del>의 특허 자회사 
+            <ins>케이이노베이션</ins>이 보유 특허 침해로 제기한<br/> 
+            특허소송과 관련해 자사가 진행한 <sup>특허 무효심판</sup>에서 승소했다고 밝혔다.
+        </div>
+        <hr/>
+        <iframe src="./footer.html" width="100%" height="70px" frameborder="0" scrolling="no"></iframe>
+        
+    </body>
+    
+</html>

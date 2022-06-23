@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input id="some" type="text" value="some text"/>
+        <p>문자가 쓰여진 <b>강조된</b> 영역</p>
+        <span id="txt"></span>
+        <span id="html"></span>
+        <fieldset>
+            <legend>숫자입력</legend>
+            <input type="range" id="point" min="0" max="100" value="30" step="1"/>
+            당신이 선택한 값 : <span id="msg"></span>
+            <br/>
+            <button id="inc">증가</button>
+            <button id="dec">감소</button>
+        </fieldset>
+        <fieldset>
+            <legend>라디오 버튼</legend>
+            <input type="radio" name="front" value="HTML"/> HTML <br/>
+            <input type="radio" name="front" value="CSS"/> CSS <br/>
+            <input type="radio" name="front" value="JS"/> JS <br/>
+            <input type="radio" name="front" value="J-QUERY"/> J-QUERY <br/>
+            <span id="selected">선택값 없음</span>
+        </fieldset>
+    </body>
+    <script>
+        //$('selector').attr('속성이름'); : 속성의 값
+        var attr =  $('#some').attr('type');
+        console.log(attr);
+        //$('selector').val(); : 해당 요소의 value
+        var val =  $('#some').val();
+        console.log(val);
+        //$('selector').html(); : 태그 사이의 html
+        var html = $('p').html();
+        //$('selector').text(); : 태그 사이의 text
+        var txt = $('p').text();
+        console.log(html); //태그를 인식해서 가져옴
+        console.log(txt); //태그를 무시하고 가져옴
+        
+        //$('selector').html('값'); : 태그 사이의 html 수정
+        $('#html').html('<h1>html(): HTML 과 TEXT 의 차이</h1>'); //h1태그가 html태그로 입력됨
+        //$('selector').text('값'); : 태그 사이의 text 수정
+        $('#txt').text('<h1>text(): HTML 과 TEXT 의 차이</h1>'); //h1태그가 문자열로 입력됨
+        //$('selector').attr('속성이름','속성에 대한 값'); : 특정 속성의 값을 수정
+        //$('selector').val('값'); : 해당 요소의 value 를 수정
+        var i = $('#point').val();
+        console.log(i);
+        //가져온 i의 값을 #msg 에 표현해 보기
+        $('#msg').html(i);
+        //#inc 를 누르면 값이 증가, 증가한 값은 #msg 에 표현
+        $('#inc').on('click', function(){
+            i++;
+            $('#point').val(i);
+            $('#msg').html(i);
+        })
+        $('#dec').on('click', function(){
+            i--;
+            $('#point').val(i);
+            $('#msg').html(i);
+        })
+        $('#point').mousedown(function(){
+            $(this).on('mousemove',function(){
+                i = $(this).val();
+                console.log(i);
+                $('#msg').html(i);
+            })
+        });
+        $('#point').mouseup(function(){
+            $(this).off('mousemove');
+        });
+        
+        //이 경우 마우스를 움직이기만 해도 콘솔이 찍히게 된다 불필요한 자원 낭비를 막아야 함
+        // $('#point').mousemove(function(){
+            //     var val = $(this).val();
+            //     console.log(val);
+            //     $('#msg').html(val);
+        // });
+        // console.log($('input[type="radio"]'));
+        // console.log($(':radio'));
+
+        //셀렉터에서 받아온 요소는 변수에 담을 수 있다
+        var $radio = $(':radio'); //제이쿼리 객체를 받아올 때는 $로 표시해준다
+        console.log($radio);
+        //1. 라디오버튼에 이벤트를 걸어준다
+        $radio.click(function() {
+            //2. 이벤트가 실행된 당사자를 찾는다
+            //3. 당사자로부터 value 값을 가져온다
+            var val = $(this).val();
+            //4. #selected 의 태그 사이에 가져온 값을 넣는다
+            $('#selected').html('당신이 선택한 값 : '+ val);
+        });
+            
+
+        // 내가 한것
+        // var cnt;
+        // var step;
+        // $('#inc').click(function() {
+        //     cnt = parseInt($('#point').val());
+        //     step = parseInt($('#point').attr('step'));
+        //     if (cnt<100) {
+        //         $('#point').val(cnt+step);
+        //         $('#msg').html(cnt+step);              
+        //     }
+        // });
+        // $('#dec').click(function() {
+        //     cnt = parseInt($('#point').val());
+        //     step = parseInt($('#point').attr('step'));
+        //     if (0<cnt) {
+        //         $('#point').val(cnt-step);
+        //         $('#msg').html(cnt-step);
+        //     }
+        // });
+        // $('#point').mousemove(function() {
+        //     $('#msg').html($(this).val());
+        // });
+
+        // var down;
+        // var up;
+        // var now;
+        // $('#point').on({
+        //     mousedown:function(){
+        //         console.log($(this).val());
+        //         down = $(this).val();
+        //         $('#msg').html(down);
+        //     },
+        //     mouseup:function(){
+        //         console.log($(this).val());
+        //         up = $(this).val();
+        //         $('#msg').html(up);
+        //     },
+        //     mouseenter:function(){
+        //         console.log($(this).val());
+        //         now = $(this).val();
+        //         $('#msg').html(now);
+        //     },
+        //     mousemove:function(){
+        //         console.log($(this).val());
+        //         move = $(this).val();
+        //         $('#msg').html($(this).val());
+        //     }
+        // });
+
+    
+
+
+    </script>
+</html>

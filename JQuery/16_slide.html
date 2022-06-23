@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            div{
+                text-align: center;
+                background-color: yellowgreen;
+                border: 1px solid green;
+                padding: 5px;
+                margin: 2px;
+                cursor: pointer;
+            }
+            .panel{
+                padding: 50px 0px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="flip">MENU 1</div>
+        <div class="panel" id="p1">SUB MENU</div>
+
+        <div id="flip2">MENU 2</div>
+        <div class="panel" id="p2">SUB MENU</div>
+    </body>
+    <script>
+        // $('#flip').on('mouseenter',function(){
+        //     $('#p1').slideDown('slow'); //slideDown('속도', callBack); : 은 아래로 길어지면서 나타난다
+        // })
+        // $('#flip').on('mouseout',function(){
+        //     $('#p1').slideUp('slow'); //slideUp('속도', callBack); : 위로 줄어들면서 사라진다
+        // })
+
+
+        //1. 마우스가 오버되어서 애니메이션이 실행 중일 때 -> 이때는 놔둔다
+        $('#flip').on('mouseenter',down); //아이디가 flip 인 요소에 mouseenter 이벤트가 발생하면 down 함수 실행   
+        
+        //2. 마우스가 나가서 애니메이션이 실행될 때 이벤트를 죽인다
+        $('#flip').on('mouseout',function(){ //아이디가 flip 인 요소에 mouseout 이벤트가 발생하면 뒤의 익명 함수 실행
+            $(this).off('mouseenter'); //이벤트를 죽이고 //mouseout 이벤트가 발생하는 요소에서 mouseenter 이벤트를 off로 제거
+            $(this).next().slideUp('slow',function() { //mouseout 이벤트가 발생하는 요소의 형제 요소 중 다음 요소에서 slideUp 애니메이션을 slow 속도로 실행 
+                                                        //애니메이션이 끝나고 나면 이벤트를 다시 살린다
+                $('#flip').on('mouseenter',down); //slideUp 애니메이션이 다 끝나고 callback 함수가 실행되는데 
+                                                    //아이디가 flip 인 요소에 mouseenter 이벤트가 발생하면 down 함수실행
+            });
+        });
+        
+        function down() { //위에서 실행될 함수
+            $('#flip').next().slideDown('slow'); //아이디가 flip 인 요소의 형제 요소 중 다음 요소에서 slideDown 애니메이션 실행
+        };
+        
+        $('#flip2').click(function(){
+            $('#p2').slideToggle('slow');
+        });
+        
+
+    </script>
+</html>

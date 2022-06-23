@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>EVENT</title>
+        <style>
+            div{
+                width: 250px;
+                height: 250px;
+                background-color: yellowgreen;
+            }
+        </style>
+    </head>
+    <!-- onload : html 문서가 다 읽히면 일어나는 이벤트 -->
+    <body onload="alert('loading 끝')" >
+
+        <!-- 한 요소에 여러 이벤트를 추가할 수도 있다 -->
+        <div onmouseover="mouseEvt('over')" onmouseout="mouseEvt('out')"></div>
+        <br/>
+        <!-- inline 속성을 가진 div : 특정 문자열을 지정할 때 사용 -->
+        <h3>오늘의 날짜 : <span id = "demo"></h3>
+        <input type="button" onclick="getDay()" value="날짜 추출"/>
+        <br/>
+        <input type="text" id="keyon" onkeydown="going()"/>
+        <input type="text" id="keyup" onkeyup="typing()"/>
+        <h4 id="typing"></h4>
+        <select id="mySelect" onchange="selectOne()">
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Benz">Benz</option>
+            <option value="Volvo">Volvo</option>
+        </select>
+        <!-- 이벤트가 발생한 그 요소 -->
+        <input id="test" type="button" value="클릭" onclick="getElem(this)"/>
+
+
+    </body>
+    <script>
+        function getElem(elem) { //클릭당한 '그' 요소가 함수로 전달
+            //console.log('getElem');
+            //버튼을 클릭하면 type이 text 로 변하도록*/
+            //document.getElementById("test").type = 'text';
+            //console.log(elem);
+            elem.type='text';
+        }
+
+        function selectOne() {
+            //console.log('select one');
+            //선택 내용을 id=typing 에 표시
+            var sel = document.getElementById('mySelect');
+            console.log(sel.value);
+            document.getElementById('typing').innerHTML=sel.value;
+            
+        }
+
+
+        function going() {
+            //console.log('key down');
+            //입력되는 값을 콘솔에 표현하기
+            var msg = document.getElementById('keyon');
+            console.log(msg.value); //한박자씩 늦는다?
+            //키 입력 후 input 에 value 가 입력되기 전에 이벤트가 발생
+            //그래서 입력한 값이 도달하기 전의 value 를 가져오게 된다
+            //입력한 값이 value에 들어가기 전에 이벤트가 발생해서 비어있는 것으로 인식
+
+        };
+        function typing() {
+            //console.log('key up');
+            //입력되는 값을 콘솔에 표현하기
+            var msg = document.getElementById('keyup');
+            console.log(msg.value);
+            //입력 내용을 id=typing 에 표시
+            //console.log(document.getElementById('typing'));
+            document.getElementById('typing').innerHTML=msg.value;
+        };
+
+
+
+
+        function getDay() {
+            console.log(Date());
+            //span 태그에 표현해 보자
+            document.getElementById('demo').innerHTML = Date();
+        };
+
+        function mouseEvt(evt) {
+            console.log('mouse '+evt);
+            //div 안에다가 콘솔에 찍은 내용을 출력해 보자
+            //1. 어디에 표현할 것인가? (어떤 요소를 가져와야 하나?)
+            //var elem = document.querySelector('div');
+            var elem = document.getElementsByTagName('div');
+            //console.log(elem[0]);
+
+            //2. 어떤 속성을 건드릴 것인가?
+            elem[0].innerHTML = 'mouse '+ evt;
+        };
+
+    </script>
+</html>

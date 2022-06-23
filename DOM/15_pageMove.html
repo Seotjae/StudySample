@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            #seconds{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <button onclick="start()">시작</button> -->
+        <h1><span id="seconds">10</span> 초 후 페이지가 이동 됩니다.</h1>
+    </body>
+    <script>
+        var time = document.getElementById('seconds');
+        var i = 10;
+        var a = setInterval(function(){
+            i--;
+            time.innerHTML=i;
+            // if (i == 0) {
+            //     clearInterval(a);
+            //     window.location.href="http://www.google.com";
+            // }
+        }, 1000);
+        
+        setTimeout(function(){
+            clearInterval(a);
+            alert('페이지를 이동 합니다.');
+            location.href="http://www.google.com";
+        },10000);
+
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMA SCRIPT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h3 id="title">Symbol</h3>
+        <p>Symbol 은 ES6 에서 추가된 객체</p>
+        <p>변경이 불가능하고 중복이 없는 키</p>
+    </body>
+    <script>    
+        $('title').html($('#title').html());
+        let sym = Symbol();
+        console.log(sym); //Symbol()
+        sym = Symbol('description'); //Symbol() 안의 문자열은 Symbol 에 대한 설명 용도
+        console.log(sym);
+        //== 은 값이 같은가? === 타입까지 같은가?
+        console.log(sym === Symbol('description'));
+
+        //중복이 없다는 점에 착안하여 오브젝트의 키로 사용되기도 한다.
+        const obj = {};
+        const key = Symbol();
+        obj[key] = 123;
+        console.log(obj);
+        console.log(obj[key]);
+        console.log(sym.toString());
+
+
+
+    </script>
+</html>

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            .ancestors *{
+                border: 2px solid gray;
+                padding: 5px;
+                margin: 15px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ancestors">
+
+            <div>DIV(great-grandparent)
+                <ul>ul(grandparent)
+                    <li>li(parent)
+                        <span>span</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>DIV(grandparent)
+                <p>p(parent)
+                    <span>span</span>
+                </p>
+            </div>
+
+        </div>
+
+    </body>
+    <script>
+        //children() : 셀렉터의 바로 아래 요소들을 가져온다
+        console.log($('.ancestors').children());
+        $('.ancestors').children().css({'border':'2px solid red'});
+
+        //find(selector) : 첫번째 셀렉터 자식 요소 중 두번째 셀렉터에 해당하는 요소를 가져온다
+        console.log($('.ancestors').find('span'));
+        $('.ancestors').find('span').css({'border':'2px solid green'});
+        
+    </script>
+</html>

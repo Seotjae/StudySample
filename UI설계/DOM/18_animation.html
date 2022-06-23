@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            #obj{
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                background-color: cadetblue;
+                top: 50px;
+                left: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="left()">left</button>
+        <button onclick="right()">right</button>
+        <button onclick="stop()">stop</button>
+        <div id="obj"></div>
+
+    </body>
+    <script>
+        var obj = document.getElementById('obj');
+        var x = 0; //현재 obj 의 x 좌표
+        var move;
+        var btn =document.getElementsByTagName('button');
+
+        function right(){
+            var i = 0;
+            
+            move = setInterval(function(){
+                i++;
+                if(i<=100){
+                    x = x + 1;
+                    obj.style.left = x;
+                    btn[0].disabled=true;
+                    btn[1].disabled=true;
+                }else{
+                    stop();
+                    btn[0].disabled=false;
+                    btn[1].disabled=false;
+                }
+            }, 10);
+        }
+
+        function stop(){
+            clearInterval(move);
+            btn[0].disabled=false;
+            btn[1].disabled=false;
+        }
+
+        function left(){
+            var i = 0;
+            if (x<=0) {
+                alert('더 이상 이동할 수 없습니다.');    
+            }else{
+                move = setInterval(function(){
+                    i++;
+                    if(i<=100){
+                        x = x - 1;
+                        obj.style.left = x;
+                        btn[0].disabled=true;
+                        btn[1].disabled=true;
+                    }else{
+                        stop();
+                        btn[0].disabled=false;
+                        btn[1].disabled=false;
+                    }
+                }, 10);
+            }
+        }
+        </script>
+</html>

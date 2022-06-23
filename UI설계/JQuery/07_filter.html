@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>첫번째 div 요소</p>
+            <p class="sel">두번째 div 요소</p>
+            <p>세번째 div 요소</p>
+            <p class="sel">네번째 div 요소</p>
+        </div>
+
+        <div>
+            <p>다섯번째 div 요소</p>
+            <p class="sel">여섯번째 div 요소</p>
+            <p>일곱번째 div 요소</p>
+            <p class="sel" id="a">여덟번째 div 요소</p>
+        </div>
+
+        <!-- <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/21/7/0/7/2/2/7/DMArw/3954707227_B.jpg" alt="제품" class="main_img"/> -->
+    </body>
+    <script>
+        //console.log($('div').children('p')); 
+        //console.log($('div').find('p'));
+        //div 자식 요소인 p 태그들을 가져와 보자
+        console.log($('div p'));
+
+        /*배열 개념*/
+        console.log($('div p').first()); //첫 인덱스
+        console.log($('div p').last()); //마지막 인덱스
+        console.log($('div p').eq(3)); //특정 인덱스
+        
+        /*필터 개념*/
+        console.log($('p').filter('.sel')); //p태그 중에서 클래스가 sel 인 요소
+        //console.log($('p.sel')); //이렇게도 된다
+        console.log($('p').not('.sel')); //필터의 정확히 반대
+
+    </script>
+</html>

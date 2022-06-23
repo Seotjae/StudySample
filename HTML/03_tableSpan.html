@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF=8">
+        <title>Table Span</title>
+        <style>
+            table, td{
+                border: 1px solid black;
+            }
+            table{
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <caption>rowspan=2</caption>
+            <tr>
+                <td>TD</td><td>TD</td><td>TD</td>
+            </tr>
+            <tr>
+                <td rowspan="2">TD</td><td>TD</td><td>TD</td>
+            </tr>
+            <tr>
+                <td>TD</td><td>TD</td>
+            </tr>
+        </table>
+        <table>
+            <caption>colspan=2</caption>
+            <tr>
+                <td>TD</td><td>TD</td><td>TD</td>
+            </tr>
+            <tr>
+                <td colspan="2">TD</td><td>TD</td>
+            </tr>
+            <tr>
+                <td>TD</td><td>TD</td><td>TD</td>
+            </tr>
+        </table>
+    </body>
+</html>

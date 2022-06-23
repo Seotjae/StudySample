@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>navi_teaching</title>
+        <style>
+            a li{
+                float: left;
+                background-color: yellowgreen;
+                width: 160px;
+                height: 30px;
+                font-weight: 600;
+                font-size: 20px;
+                text-align: center;
+                list-style: none;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                
+            }
+            a:link{
+                color: white;
+                text-decoration: none;
+            }
+            a:visited{
+                color: white;
+                text-decoration: none;
+            }
+            a li:hover{
+                background-color: orange;
+            }
+            .bar{
+                width: 100%;
+                height: 36px;
+                background-color: yellowgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <!--List: li 태그 -> 순차적인 리스트를 만들 때 사용-->
+        <div class="bar">
+            <ul>
+                <!-- 
+                    default: iframe 안에서 페이지 변환이 일어남
+                    target="_blank" : 새 탭을 만들어 페이지 변환을 일으킴
+                    target="_parent": iframe 을 품고있는 부모에서 페이지 변환을 일으킴
+                -->
+                <a href="./subPage01.html" target="_parent"><li>HTML</li></a>
+                <a href="./subPage02.html" target="_parent"><li>CSS</li></a>
+                <a href="./subPage03.html" target="_parent"><li>JAVA-SCRIPT</li></a>
+                <a href="./subPage04.html" target="_parent"><li>J-QUERY</li></a>
+                <a href="#"><li>REACT-JS</li></a> <!-- 링크는 걸었지만 이동 기능을 사용하지 않는 경우-->
+            </ul>
+        </div>
+    </body>
+</html>

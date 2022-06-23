@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+            table, th, td{
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 10px 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <table width="100%">
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>과목</th>
+                <th>학점</th>
+                <th>설명</th>
+            </tr>
+        </table>
+        학번 : <input id="no" type="text"/><br/>
+        이름 : <input id="name" type="text"/><br/>
+        과목 : <input id="sub" type="text"/><br/>
+        학점 : <input id="score" type="text"/><br/>
+        설명 : <input id="desc" type="text"/><br/>
+        <button>입력</button>
+    </body>
+    <script>
+        $('button').click(function(){
+            var $text = $('input[type="text"]');
+            $('table').append('<tr></tr>');
+            for(var i=0; i<$text.length; i++){
+                $('tr').last().append('<td>'+$text.eq(i).val()+'</td>')  
+            };
+            
+            // $('table').append(
+            //     '<tr>'+
+            //         '<td>'+$text.eq(0).val()+'</td>'+
+            //         '<td>'+$text.eq(1).val()+'</td>'+
+            //         '<td>'+$text.eq(2).val()+'</td>'+
+            //         '<td>'+$text.eq(3).val()+'</td>'+
+            //         '<td>'+$text.eq(4).val()+'</td>'+
+            //     '<tr>'
+            // );
+            
+           
+
+
+            //편하게 하는 법 //단점: 처음 만들 때의 요소 위치가 달라지면 안된다
+            // var $elem = $('input'); 
+            // var txt = '<tr>';
+            // for(var i=0; i<$elem.length; i++){
+            //     txt += '<td>'+$elem.eq(i).val()+'</td>'
+            // };
+            // txt += '</tr>'
+            // $('table').append(txt);
+
+
+            //안전한 방식 (요소 순서가 바뀌어도 상관 없다)
+            // var no = $('#no').val();
+            // var name = $('#name').val();
+            // var sub = $('#sub').val();
+            // var score = $('#score').val();
+            // var desc = $('#desc').val();
+
+            // var txt = '<tr>';
+            // txt += '<td>'+no+'</td>';
+            // txt += '<td>'+name+'</td>';
+            // txt += '<td>'+sub+'</td>';
+            // txt += '<td>'+score+'</td>';
+            // txt += '<td>'+desc+'</td>';
+            // txt += '</tr>';
+            // $('table').append(txt);
+        });
+    </script>
+</html>

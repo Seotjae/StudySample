@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- ol 은 하위 li 의 표시를 . 대신 숫자로 한다 -->
+        <ol>
+            <!-- prepend 가 붙는 자리 -->
+            <li>List Item 1</li>
+            <!-- append 가 붙는 자리 -->
+        </ol>
+        <button id="apnd">Append</button>
+        <button id="ppnd">Prepend</button>
+        <button id="aft">After</button>
+        <button id="bef">Before</button>
+    </body>
+    <script>
+        var i = 1;
+        $('#apnd').click(function(){ //append : 선택한 요소의 자식요소 맨 마지막
+            i++
+            $('ol').append('<li>List Item '+i+'</li>');
+        });
+
+        $('#ppnd').click(function(){ //prepend : 선택한 요소의 자식요소 맨 위
+            i++
+            $('ol').prepend('<li>List Item '+i+'</li>');
+        });
+
+        $('#aft').click(function(){ //after : 선택한 요소 아래 (ol의 형제 요소가 된다)
+            i++
+            $('ol').after('<li>List Item '+i+'</li>'); 
+        });
+
+        $('#bef').click(function(){ //before : 선택한 요소 위 (ol의 형제 요소가 된다)
+            i++
+            $('ol').before('<li>List Item '+i+'</li>');
+        });
+    </script>
+</html>

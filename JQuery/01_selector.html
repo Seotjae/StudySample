@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>클래스가 없다.</h1>
+        <h1 class="cls">클래스가 있다.</h1>
+        <h2>클래스가 없다.</h2>
+        <h2 class="cls">클래스가 있다.</h2>
+
+        <p id="one"></p>
+        <p>태그만 있는 녀석</p>
+        <p>태그만 있는 녀석</p>
+
+        <h3>LIST 1:</h3>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>J-Query</li>
+
+        </ul>
+
+        <h3>LIST 2:</h3>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>J-Query</li>
+        </ul>
+
+        <a href="https://www.w3schools.com">사이트 링크 A</a><br/>
+        <a href="https://www.w3schools.com">사이트 링크 B</a><br/>
+        <a href="https://www.w3schools.com" target="_blank">사이트 링크 C</a><br/>
+    </body>
+    <script>
+        //$() 이 안에 셀렉터를 넣으면 해당 요소를 반환 (요소를 보여주는 방식이 js 와 조금 다르다)
+        //가져오나 못 가져오나 무언가를 반환 
+        //그렇기 때문에 length나 가져온 내용을 확인해야 함 : length 가 1 이상이 아니면 못 가져온 것
+        //기초
+        console.log($('#one')); //아이디가 one 인 요소
+        console.log($('.cls')); //클래스가 cls 인 요소
+        console.log($('p')); //p 태그
+    
+        // ... 중 ... 를 가져와라
+        console.log($('*')); //모든 요소(잘 쓰이지 않음), 아스테리크(*) 는 모든 것을 의미
+        console.log($('h1.cls')); //h1 태그 중에서 클래스가 cls 인 요소
+        console.log($('p:first')); //p 태그 중에서 첫번째 요소
+
+        //$(this) 는 이벤트가 발생한 당사자를 의미
+        $('p').click(function(){
+            console.log($(this));
+        });
+        console.log($('ul li:first')); //첫번째 ul의 첫번째 li
+        console.log($('ul li:first-child')); //각 ul의 첫번째 자식들을 가져옴
+
+        //속성필터: 특정 요소의 특정 속성을 기준으로 가져옴
+        console.log($('a[href]')); //a 태그 중에서 href 속성이 있는 요소
+        console.log($('a[target="_blank"]')); //a 태그 중에서 target 속성이 _blank 인 요소
+        console.log($('a[target!="_blank"]')); //a 태그 중에서 target 속성이 _blank 가 아닌 요소
+    
+        $('a:even').css({'background-color':'lightgray'});
+    
+    </script>
+</html>

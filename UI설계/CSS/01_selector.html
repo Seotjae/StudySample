@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="icon" href="./icon.png">
+        <style>
+            /* CSS 주석은 이거 한종류 */
+            #myid{
+                color: crimson;
+            }
+            .myclass{
+                color: cornflowerblue;
+            }
+            p{
+                background-color: yellow;
+            }
+            div,p{
+                font-weight: 600; /*600 == <b></b>*/;
+            }
+            div>p{/* div p 처럼 > 를 생략할 수 있다 */
+                background-color: deeppink;
+            }
+            input[type="text"]{
+                background-color: dodgerblue;
+            }
+            input[type="email"]{
+                background-color: lightpink;
+            }
+            img{
+                width: 100px;
+            }
+            /* 일부가 띄어쓰기 단위 fire 나 flower가 들어가야한다는 뜻 */
+            img[alt~="fire"]{
+                border: 1px solid black;
+            }
+            img:hover{
+                border: 1px solid red;
+            }
+            a[href="#"]:hover{
+                background-color: dodgerblue;
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p id="myid">id 가 있는 요소</p><!--현재 문서에 한개만 존재 (여러개일 경우 가장 위의 아이디만 선택된다)-->
+        <p class="myclass">class 가 있는 요소</p><!--여러개 존재가 가능-->
+        <p class="myclass">class 가 있는 요소</p>
+        <p>태그 만 있는 요소</p>
+
+        <!--형태가 없다, 영역 지정 용도로 활용-->
+        <div>DIV 요소</div>
+        <div>
+            <p>DIV 안의(자식) p 태그</p>
+        </div>
+
+        <input type="text"/>
+        <input type="email"/>
+        <br/>
+        <img src="./img01.jpg" alt="mushroom"/>
+        <img src="./img02.jpg" alt="fire flower"/>
+        <img src="./img03.jpg" alt="mario"/>
+        <img src="./img04.jpg" alt="unknown"/>
+        <br/><br/>
+        <!--아래 링크에 손을 올렸을 때 배경색이 변경되도록-->
+        <a href="#">TEST LINK</a>
+    </body>
+</html>

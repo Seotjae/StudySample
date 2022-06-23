@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <button id="btn">버튼 생성</button>
+        <button id="evtDel">이벤트 삭제 </button>
+    </body>
+    <script>
+        //$('selector').on('감시할이벤트',실행함수);
+        $('#btn').on('click',function(){
+            //console.log('btn click');
+            //body 자식 요소로 맨 마지막 위치에 추가
+            //$('body').append('<button onclick="test()">click</button>'); //1. onclick 활용
+            $('body').append('<button class="newBtn">click</button>');
+            $('.newBtn').click(function(){ //추가된 버튼들에 이벤트가 계속 걸림
+                alert('경고3');
+            }); 
+            
+        });
+
+        //$('selector').감시할이벤트(실행함수);
+        $('#evtDel').click(function(){
+            //console.log('evtDel click');
+            //on 으로 붙인 이벤트는 off 로 죽일 수 있다
+            $('#btn').off('click'); //아이디가 btn인 요소의 click 이벤트를 죽인다
+        });
+
+        //새로 생성된 버튼을 클릭하면 경고창이 뜨도록 해 보자
+        // $('.newBtn').click(function(){
+        //     alert('경고');
+        // });
+
+        //class 가 btn 인 요소는 클릭을 해야만 생기므로 그 전에는 이벤트를 걸수가 없다
+        //만약 새로생긴 요소에 이벤트를 걸고싶다면?
+        //1. onclick -> 가장 추천
+        function test(){
+            alert('경고1');
+        };
+        //2. on 을 사용 - document 에 click 이라는 이벤트를 특정 target 에 걸도록 명령
+        // $(document).on('click','.newBtn',function() {
+        //     alert('경고2');
+        // });
+        //3. 요소를 생성하고 이벤트를 바로 걸어주는 방법
+    </script>
+</html>

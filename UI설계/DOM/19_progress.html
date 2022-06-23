@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+            #mask{
+                position: absolute;
+                z-index: 2;
+                background-color: black;
+                opacity: 0.7;
+                display: none;
+            }
+
+            #myprogress{
+                width: 300px;
+                position: absolute;
+                top: 45%;
+                left: 43%;
+                background-color: lightgray;
+            }
+            #myBar{
+                width: 0%;
+                background-color: green;
+                text-align: center;
+                color: white;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="mask"> <!--까만 배경-->
+            <div id="myprogress"> <!--회색 바-->
+                <div id="myBar">0%</div> <!--녹색 바-->
+            </div>
+        </div>
+        <button onclick="goProgress()">다운로드</button>
+    </body>
+    <script>
+        function goProgress(){
+            var mask = document.getElementById('mask');
+            console.log(mask);
+            mask.style.display='block';
+
+            //inner... 는 브라우저 바, 탭, 즐겨찾기를 제외한 크기를 알려줌
+            mask.style.width=window.innerWidth;
+            mask.style.height=window.innerHeight;
+
+            var mybar = document.getElementById('myBar');
+            var i = 1;
+            
+            var time = setInterval(function(){
+                if (i<100) {
+                    i++;
+                    mybar.style.width=i+'%';
+                    mybar.innerHTML=i+'%';
+                }else{
+                    clearInterval(time);
+                    mask.style.display='none';
+                    alert('다운로드가 완료 되었습니다.');
+                }
+            }, 10);
+        }
+    </script>
+</html>

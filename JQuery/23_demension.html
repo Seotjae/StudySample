@@ -1,0 +1,48 @@
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>j-query 강좌</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            img{
+                width: 400px;
+                height: 300px;                
+                padding: 10px;
+                border: 3px solid black;
+                margin: 5px;                
+            }
+        </style>
+    </head>
+    <body>
+        <img src="demension.png"/>
+        <p id="msg"></p>
+        <p id="wsize"></p>
+        <button id="width">width()</button>
+        <button id="innerWidth">innerWidth()</button>
+        <button id="outerWidth">outerWidth()</button>
+        <button id="outerWidth2">outerWidth(true)</button>
+    </body>
+    <script>
+        //width() : 순수 요소 크기
+        $('#width').click(function() {//400px
+            $('#msg').html($('img').width());
+        });
+
+        //innerWidth() : 요소 + padding
+        $('#innerWidth').click(function() {//420px
+            $('#msg').html($('img').innerWidth());
+        });
+
+        //outerWidth() : 요소 + padding + border
+        $('#outerWidth').click(function() {//426px
+            $('#msg').html($('img').outerWidth());
+        });
+
+        //outerWidth(true) : 요소 + padding + border + margin
+        $('#outerWidth2').click(function() {//436px
+            $('#msg').html($('img').outerWidth(true));
+        });
+
+    </script>
+</html>

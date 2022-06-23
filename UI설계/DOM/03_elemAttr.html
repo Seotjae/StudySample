@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <a href="#" my-attr="header">링크 클릭</a>
+        <a href="#" my-attr="main">링크 클릭</a>
+        <a href="#" my-attr="footer">링크 클릭</a>
+    </body>
+    <script>
+        //href 는 기본속성
+        //my-attr 은 유저속성 (새로 만들어냄)
+        //a 태그 내용을 가져와 콘솔에 출력
+        var elem = document.querySelectorAll('a');
+        console.log(elem);
+        //그 중에서 첫번째 태그만 콘솔에 출력
+        console.log(elem[0]);
+        elem = document.querySelector('a[my-attr="header"]');
+        console.log(elem);
+
+        //자바스크립트에서는 기본속성과 사용자 속성 모두를 다룰 수 있다
+
+        
+    </script>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- url 에는 태그의 정의가 들어있기 때문에 url이 없을 경우 태그를 인식하지 못함 -->
+<!DOCTYPE mapper PUBLIC   "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+> 
+
+<!-- 이 XML 이 어떤 interface 와 연결되는지 설정 -->
+<mapper namespace="com.gudi.member.dao.MemberDAO">
+
+	<!-- id 에는 연결할 메서드 명 -->
+	<!-- MyBatis 에서는 물음표(?) 를 사용하지 않는다, #{param순서} -->
+	<!-- 이것만 하면 Connection, preparedStatement 등을 부르지도 반납하지도 않는다 -> I.O.C -->
+	<insert id="join">
+		insert into member(id,pw,name,age,gender,email)
+			values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+	</insert>
+	
+	<!-- select 구문에는 받아올 데이터 타입을 지정해 줘야 한다 -->
+	<select id="login" resultType="String">
+		select id from member where id=#{param1} and pw=#{param2}
+	</select>
+	
+	<!-- DTO 사용 시 풀 경로를 다 적어줘야 함 -->
+	<select id="list" resultType="com.gudi.member.dto.MemberDTO">
+		select id, name from member
+	</select>
+	
+	<delete id="del">
+		delete from member where id=#{param1}
+	</delete>
+	
+	<select id="detail" resultType="com.gudi.member.dto.MemberDTO">
+		select * from member where id=#{param1}
+	</select>
+	
+	<update id="update">
+		update member set pw=#{param2},  name=#{param3},  age=#{param4},  gender=#{param5}, email=#{param6} where id=#{param1}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                float: left;
+                text-align: center;
+                margin: 5px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+            #mousezone{
+                background-color: rgb(54, 223, 214);
+            }
+            #overzone{
+                background-color: magenta;
+            }
+        </style>
+    </head>
+    <body>
+        <p>클릭하면 글자 색상이 바뀌어요~!</p>
+        <p>클릭하면 글자 색상이 바뀌어요~!</p>
+        <p>클릭하면 글자 색상이 바뀌어요~!</p>
+        <p>클릭하면 글자 색상이 바뀌어요~!</p>
+        <div id="mousezone">마우스 존</div>
+        <div id="overzone">H 오버 존</div>
+
+    </body>
+    <script>
+        //$(selector).click(function(){});
+        //p를 클릭하면 빨강색
+        $('p').click(function(){
+            //console.log('실행');
+            $(this).css({'color':'red'});
+        });
+
+        //$(selector).dblclick(function(){});
+        //p를 더블클릭하면 파랑색
+        // $('p').dblclick(function(){
+        //     //console.log('실행');
+        // });
+        $('p').on('dblclick',function() {
+            $(this).css({'color':'blue'});
+        });
+
+        //마우스가 마우스존에 들어갔을 때와 나갔을 때 배경색을 바꿔보자
+        //mouseenter, mouseover
+        // $('#mousezone').mouseover(function() {
+        //     //아이디 같이 딱 한개만 지정된 경우 this 를 사용하지 않아도 된다
+        //     $('#mousezone').css({'background-color':'white'});
+        // });
+        // //mouseleave, mouseout
+        // $('#mousezone').mouseout(function() {
+        //     //그럼에도 불구하고 this 는 편리한 점이 많아서 사용하면 좋다
+        //     $(this).css({'background-color':'rgb(54, 223, 214)'});
+        // });
+
+        //on 을 통해서 한번에 여러 이벤트를 적용할 수 있다
+        $('#mousezone').on({
+            mouseover:function(){
+                $(this).css({'background-color':'white'});
+            },
+            mouseout:function(){
+                $(this).css({'background-color':'rgb(54, 223, 214)'});
+            }
+        });
+
+        //위와 비슷한 일을 hover( ) 로 할 수 있다 (on 에서 추가할 수 없는 이벤트)
+        //$( selector ).hover( function(  ){ mouse over 시  할일 }, function( ){ mouse out 시 할일 } );
+        $('#overzone').hover(
+            function(){ 
+                $(this).css({'background-color':'white'});
+            }, 
+             function( ){ 
+                $(this).css({'background-color':'magenta'});
+            });
+    </script>
+</html>

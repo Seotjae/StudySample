@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>Javascript DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        부모 창으로 보낼 값 : <input type="text" id="toParent"/>
+        <button onclick="sendVal()">보내기</button> 
+        <br/>
+        부모 창에서 받아온 값 : <input type="text" id="fromParent"/> 
+
+    </body>
+    <script>
+        function sendVal(){ //보내기 버튼을 클릭하면 실행될 함수
+            var val = document.getElementById('toParent').value; //이 문서에서 toParent id를 가진 태그의 요소를 불러와 val이라는 변수에 담는다
+            //opener 는 부모창을 지칭하는 키워드
+            opener.document.getElementById('fromChild').value=val; //부모창(opener)의 문서에서 fromChild라는 id를 가진 태그의 요소에서
+            //value 속성을 불러와 val 변수를 값에 넣는다
+            opener.plus(3,5); //부모창의 함수 호출 //부모창에 있는 함수 plus() 를 호출하고 3과 5의 값을 넣는다
+        }
+
+
+    </script>
+</html>

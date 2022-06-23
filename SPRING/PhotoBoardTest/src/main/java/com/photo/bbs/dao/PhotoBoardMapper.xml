@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- url 에는 태그의 정의가 들어있기 때문에 url이 없을 경우 태그를 인식하지 못함 -->
+<!DOCTYPE mapper PUBLIC   "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+> 
+
+<!-- 이 XML 이 어떤 interface 와 연결되는지 설정 -->
+<mapper namespace="com.photo.bbs.dao.PhotoBoardDAO">
+	<select id="list" resultType="com.photo.bbs.dto.BoardDTO">
+		select idx,subject,user_name,reg_date,bHit from bbs order by idx desc
+	</select>
+	
+	<update id="upHit">
+		update bbs set bHit = bHit+1 where idx=#{param1}
+	</update>
+	
+	<select id="detail" resultType="com.photo.bbs.dto.BoardDTO">
+		select idx,subject,content,user_name,reg_date,bHit from bbs where idx=#{param1}
+	</select>
+	
+	<insert id="write" parameterType="com.photo.bbs.dto.BoardDTO" useGeneratedKeys="true" keyProperty="idx" keyColumn="idx">
+		insert into bbs(subject,user_name,content)values(#{subject},#{user_name},#{content})
+	</insert>
+	
+	<insert id="photosUpload">
+		insert into photo(idx,oriFileName,newFileName)values(#{param1},#{param2},#{param3})
+	</insert>
+	
+	<select id="photolist" resultType="com.photo.bbs.dto.PhotoDTO">
+		select oriFileName,newFileName from photo where idx=#{param1}
+	</select>
+
+	
+</mapper>

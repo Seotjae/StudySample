@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./favicon.ico">
+        <title>J-Query</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <style>
+            .ancestors *{
+                border: 2px solid gray;
+                padding: 5px;
+                margin: 15px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ancestors">
+            <div>DIV(great-grandparent)
+                <ul>ul(grandparent)
+                    <li>li(parent)
+                        <span>span</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>DIV(grandparent)
+                <p>p(parent)
+                    <span>span</span>
+                </p>
+            </div>
+        </div>
+
+    </body>
+    <script>
+        //span 을 기준으로 바로 위 부모 요소 선택
+        console.log($('span').parent());
+        //$('span').parent().css({'border':'2px solid red'});
+
+        //$('span').parents() : span 을 기준으로 html 요소 까지 선택
+        //$('span').parents('div') : span 을 기준으로 html 요소까지 올라가며 div만 찾아준다
+        console.log($('span').parents('div'));
+        //$('span').parents('div').css({'border':'2px solid red'});
+
+        //span 을 기준으로 .ancestors 요소 까지 선택
+        //span 과 ancestors 는 제외
+        console.log($('span').parentsUntil('.ancestors'));
+        $('span').parentsUntil('.ancestors').css({'border':'2px solid red'});
+        
+    </script>
+</html>

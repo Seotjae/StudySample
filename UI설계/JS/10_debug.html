@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <title></title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        //디버그 방식1 : console
+        //console 에는 무엇이든 표현된다
+        var str = '문자열';
+        var num = 1;
+        var obj = {'key':'value'};
+        var arr = [1,2,3,4,5];
+        console.log('arr : ' + arr); // + 로 문자열과 연결하면 문자열로 인식
+        console.log('arr : ', arr); //, 로 구분하면 데이터 구조를 그대로 보여준다
+        debugger; //특정 지점에서 정지시킨다
+
+        //각 로그의 레벨
+        console.log('Log 정보'); //개발 디버그용
+        console.info('중요 정보'); //개발 디버그용
+        debugger; //개발자모드(F12) 가 켜있지 않으면 동작하지 않는다
+
+        console.warn('경고');
+        console.error('에러 정보');
+
+        /* debugger 나 console 은 개발이 완료되면 지워줘야 한다 */
+
+    </script>
+</html>
